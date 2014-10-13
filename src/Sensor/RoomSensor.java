@@ -6,15 +6,22 @@ import java.util.ArrayList;
 
 
 
-
+/**
+ * RoomSensor class has nested Cell class that contains all the necessary information about that Cell.
+ * @author adampodraza
+ *
+ */
 public class RoomSensor implements Sensor {
-	
+	//Dependent Memory object
 	Memory memory;
 	ArrayList<Cell> cells;
 	
+	//Dependent Cell object
 	Cell currentCell;
 	
-	
+	/**
+	 * RoomSensor constructor initializes memory and floorplan and sets the current cell.
+	 */
 	public RoomSensor() {
 		
 		memory = new Memory();
@@ -25,30 +32,45 @@ public class RoomSensor implements Sensor {
 		
 	}
 
+	/**
+	 * returns current cell's x coordinate
+	 */
 	@Override
 	public int getCurrentCellX() {
 		// TODO Auto-generated method stub
 		return currentCell.getXs();
 	}
 
+	/**
+	 * returns current cell's y coordinate
+	 */
 	@Override
 	public int getCurrentCellY() {
 		// TODO Auto-generated method stub
 		return currentCell.getYs();
 	}
 
+	/**
+	 * returns whether or not the cell is clean
+	 */
 	@Override
 	public boolean isClean() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	/**
+	 * boolean informs the vacuum whether west path is obstructed
+	 */
 	@Override
 	public boolean canGoWest() {
 		// TODO Auto-generated method stub
 		return currentCell.getWestOpen();
 	}
 
+	/**
+	 * moves sensor west
+	 */
 	@Override
 	public boolean goWest() {
 		// TODO Auto-generated method stub
@@ -64,12 +86,18 @@ public class RoomSensor implements Sensor {
 		
 	}
 
+	/**
+	 * boolean informs the vacuum whether east path is obstructed
+	 */
 	@Override
 	public boolean canGoEast() {
 		// TODO Auto-generated method stub
 		return currentCell.getEastOpen();
 	}
 
+	/**
+	 * moves sensor east
+	 */
 	@Override
 	public boolean goEast() {
 		// TODO Auto-generated method stub
@@ -85,12 +113,18 @@ public class RoomSensor implements Sensor {
 		
 	}
 
+	/**
+	 * boolean informs vacuum if north path is obstructed
+	 */
 	@Override
 	public boolean canGoNorth() {
 		// TODO Auto-generated method stub
 		return currentCell.getNorthOpen();
 	}
 
+	/**
+	 * moves sensor north
+	 */
 	@Override
 	public boolean goNorth() {
 		// TODO Auto-generated method stub
@@ -105,12 +139,19 @@ public class RoomSensor implements Sensor {
 		return false;
 	}
 
+	
+	/**
+	 * boolean informs vacuum if south path is obstructed
+	 */
 	@Override
 	public boolean canGoSouth() {
 		// TODO Auto-generated method stub
 		return currentCell.getSouthOpen();
 	}
-
+	
+	/**
+	 * moves vacuum south
+	 */
 	@Override
 	public boolean goSouth() {
 		// TODO Auto-generated method stub
@@ -205,6 +246,10 @@ public class RoomSensor implements Sensor {
 			return ps;
 		}
 
+		/**
+		 * This method sets the booleans for path obstructions based on the ps variable.
+		 * @param ps
+		 */
 		public void setPs(int ps) {
 			this.ps = ps;
 			
