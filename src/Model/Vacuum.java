@@ -13,6 +13,13 @@ import Sensor.Sensor;
  */
 
 public class Vacuum extends Thread {
+	
+	private enum Direction{
+		EAST, WEST, NORTH, SOUTH
+	}
+	
+	Direction dir = Direction.NORTH;
+	
 	//List that tracks previously visited cells
 	private ArrayList<Cell> visitedCells = new ArrayList<Cell>();
 	
@@ -35,28 +42,15 @@ public class Vacuum extends Thread {
 	 * @return
 	 */
 	public boolean goEast() {
-		//movement in the case that the cell to the East is a new cell.
-		if(sensor.canGoEast() && !visitedCells.contains(currentCell)){
-			
-			visitedCells.add(currentCell);
-			sensor.goEast();
-			
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-			return true;
-		} 
-		//movement in the case that the cell to the East has been visited previously.
-		else if (sensor.canGoEast() && visitedCells.contains(currentCell)) {
-			
-			sensor.goWest();
-			
-			
-			
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY()); 
-			return true;
-		}
 		
-		return false;
+			
+		visitedCells.add(currentCell);
+		sensor.goEast();
+			
+		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
+			
+		return true;
+		
 		
 	}
 	
@@ -65,25 +59,15 @@ public class Vacuum extends Thread {
 	 * @return
 	 */
 	public boolean goWest() {
-		//movement in the case that the cell to the "West" has not been visited
-		if(sensor.canGoWest() && !visitedCells.contains(currentCell)){
-			
-			visitedCells.add(currentCell);
-			
-			sensor.goWest();
-			
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-			return true;
-		} 
-		//movement in the case that the cell to the "West" has been visited
-		else if(sensor.canGoWest() && visitedCells.contains(currentCell)) {
-			sensor.goNorth();
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			return true;
-		}
 		
-		return false;
+		visitedCells.add(currentCell);
+			
+		sensor.goWest();
+			
+		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
+			
+		return true;
+		
 	}
 	
 	/**
@@ -92,24 +76,14 @@ public class Vacuum extends Thread {
 	 */
 	public boolean goNorth() {
 		
-		//movement in the case that cell to the north has not been visited
-		if(sensor.canGoNorth() && !visitedCells.contains(currentCell)) {
 			
-			visitedCells.add(currentCell);
-			sensor.goNorth();
+		visitedCells.add(currentCell);
+		sensor.goNorth();
 			
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
+		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
 			
-			return true;
-		} 
-		//movement in the case that the cell to the north has been visited
-		else if (sensor.canGoNorth() && visitedCells.contains(currentCell)) {
-			sensor.goSouth();
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			return true;
-		}
+		return true;
 		
-		return false;
 		
 	}
 	
@@ -119,22 +93,13 @@ public class Vacuum extends Thread {
 	 */
 	public boolean goSouth() {
 		//movement in the case that the cell to the south has not been visited
-		if(sensor.canGoSouth() && visitedCells.contains(currentCell)) {
-			
-			visitedCells.add(currentCell);
-			sensor.goSouth();
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-			return true;
-		} 
-		//movement in the case that the cell to the south has been visited
-		else if (sensor.canGoNorth() && visitedCells.contains(currentCell)) {
-			sensor.goEast();
-			currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			return true;
-		}
 		
-		return false;
+		visitedCells.add(currentCell);
+		sensor.goSouth();
+		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
+			
+		return true;
+		
 		
 	}
 	
@@ -144,23 +109,49 @@ public class Vacuum extends Thread {
 	 */
 	
 	public boolean move() {
-		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-		if (goNorth()) {
-			System.out.println("New cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			System.out.println("Vacuum moved North.");
+		
+		if(dir.equals(Direction.NORTH) && sensor.canGoNorth()) {
+			goNorth();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
 			return true;
-		}if(goWest()) {
-			System.out.println("New cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			System.out.println("Vacuum moved West."); 
+		}
+		if(dir.equals(Direction.NORTH) && !sensor.canGoNorth()) {
+			dir = Direction.WEST;
+			goWest();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
 			return true;
-		}if(goSouth()) {
-			System.out.println("New cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			System.out.println("Vacuum moved South.");
+		}
+		if(dir.equals(Direction.WEST) && sensor.canGoWest()) {
+			goWest();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
 			return true;
-		} 
-		if (goEast()) {
-			System.out.println("New cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			System.out.println("Vacuum moved East.");
+		}
+		if(dir.equals(Direction.WEST) && !sensor.canGoWest()) {
+			dir = Direction.SOUTH;
+			goSouth();
+			System.out.println("Current cell positon is " + currentCell.getX() + ", " + currentCell.getY());
+			return true;
+		}
+		if(dir.equals(Direction.SOUTH) && sensor.canGoSouth()) {
+			goSouth();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
+			return true;
+		}
+		if(dir.equals(Direction.SOUTH) && !sensor.canGoSouth()) {
+			dir = Direction.EAST;
+			goEast();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
+			return true;
+		}
+		if(dir.equals(Direction.EAST) && sensor.canGoEast()) {
+			goEast();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
+			return true;
+		}
+		if(dir.equals(Direction.EAST) && !sensor.canGoEast()) {
+			dir = Direction.NORTH;
+			goNorth();
+			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
 			return true;
 		}
 		return false;
@@ -170,7 +161,7 @@ public class Vacuum extends Thread {
 	public void run() {
 		// TODO Auto-generated method stub
 		System.out.println("Vacuum is running.");
-		
+		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
 		while (on) {
 			this.move();
 		}
