@@ -20,7 +20,7 @@ public class RoomSensor implements Sensor {
 	Cell currentCell;
 	
 	/**
-	 * RoomSensor constructor initializes memory and floorplan and sets the current cell.
+	 * RoomSensor constructor initializes memory and floor plan and sets the current cell.
 	 */
 	public RoomSensor() {
 		
@@ -56,7 +56,36 @@ public class RoomSensor implements Sensor {
 	@Override
 	public boolean isClean() {
 		// TODO Auto-generated method stub
-		return false;
+		return currentCell.getIsClean();
+	}
+	
+	/**
+	 * returns amount of dirt remaining
+	 */
+	public int getDirtRemaining() {
+		return currentCell.getDs();
+	}
+	
+	/**
+	 * set amount of dirt remaining at location (need to update to clean or partially clean after every "cleaning")
+	 */
+	public void setDirtRemaining(int dirt) {
+		currentCell.setDs(dirt);
+	}
+	
+	/**
+	 * returns whether or not the charging station is present at this location
+	 * @return boolean
+	 */
+	public boolean getIsChargingStation() {
+		return currentCell.getIsCharginStation();
+	}
+	
+	/**
+	 * returns what type of floor is present at this location
+	 */
+	public int getFloorType() {
+		return currentCell.getSs();
 	}
 
 	/**
@@ -185,6 +214,9 @@ public class RoomSensor implements Sensor {
 		private boolean eastOpen;
 		private boolean westOpen;
 		
+		private boolean isClean;
+		
+		private boolean isChargingStation;
 
 		public Cell() {
 			
@@ -287,21 +319,55 @@ public class RoomSensor implements Sensor {
 			
 			
 		}
+		/**
+		 * method returns amount of dirt present at current location
+		 * 
+		 * @return ds
+		 */
 
 		public int getDs() {
 			return ds;
 		}
-
+		
+		/**
+		 * method sets the amount of dirt remaining at location
+		 * @param ds
+		 */
 		public void setDs(int ds) {
+			if (ds < 1) {
+				this.isClean = false;
+			}
+			else
+				this.isClean = true;
+			
 			this.ds = ds;
 		}
+		
+		/**
+		 * Returns whether or not dirt is present at the current location
+		 * 
+		 * @return isClean
+		 */
+		public boolean getIsClean() {
+			return this.isClean;
+		}
 
+		
 		public int getCs() {
 			return cs;
 		}
 
 		public void setCs(int cs) {
+			if(cs == 1) {
+				this.isChargingStation = true;
+			}
+			else
+				this.isChargingStation = false;
 			this.cs = cs;
+		}
+		
+		public boolean getIsCharginStation() {
+			return this.isChargingStation;
 		}
 
 	}
