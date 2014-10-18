@@ -31,6 +31,15 @@ public class RoomSensor implements Sensor {
 		currentCell = cells.get(0);
 		
 	}
+        
+        public void setCurrentCell(int x, int y){
+            for(Cell cell:cells){
+                if(cell.xs==x&&cell.ys==y){
+                    currentCell=cell;
+                    break;
+                }
+            }
+        }
 
 	/**
 	 * returns current cell's x coordinate
@@ -221,6 +230,10 @@ public class RoomSensor implements Sensor {
 		public Cell() {
 			
 		}
+
+        public Cell(int i, int i0) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 		
 		public boolean getNorthOpen() {
 			return northOpen;
@@ -287,13 +300,13 @@ public class RoomSensor implements Sensor {
 			
 			String psString = Integer.toString(ps);
 			
-			String w = psString.substring(0, 1);
-			String e = psString.substring(1, 2);
+			String e = psString.substring(0, 1);
+			String w = psString.substring(1, 2);
 			String n = psString.substring(2,3);
 			String s = psString.substring(3,4);
 			
-			int west = Integer.parseInt(w);
 			int east = Integer.parseInt(e);
+			int west = Integer.parseInt(w);
 			int north = Integer.parseInt(n);
 			int south = Integer.parseInt(s);
 			
