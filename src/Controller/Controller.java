@@ -12,7 +12,7 @@ public class Controller {
 	public static void main(String[] args) {
 		on = true;
 		
-		Sensor rs = new RoomSensor();
+		RoomSensor rs = new RoomSensor();
 		
 		Vacuum vacuum = new Vacuum(rs);
 		
