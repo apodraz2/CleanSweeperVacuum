@@ -105,7 +105,7 @@ public class RoomSensor implements Sensor {
 		// TODO Auto-generated method stub
 		if(canGoWest()) {
 			for (int i = 0; i < cells.size(); i++) {
-				if (cells.get(i).getXs() == currentCell.getXs() + 1 && cells.get(i).getYs() == currentCell.getYs()) {
+				if (cells.get(i).getXs() == currentCell.getXs() - 1 && cells.get(i).getYs() == currentCell.getYs()) {
 					currentCell = cells.get(i);
 					return true;
 				}
@@ -132,7 +132,7 @@ public class RoomSensor implements Sensor {
 		// TODO Auto-generated method stub
 		if(canGoEast()) {
 			for(int i = 0; i < cells.size(); i++) {
-				if (cells.get(i).getXs() == currentCell.getXs() - 1 && cells.get(i).getYs() == currentCell.getYs()) {
+				if (cells.get(i).getXs() == currentCell.getXs() + 1 && cells.get(i).getYs() == currentCell.getYs()) {
 					currentCell = cells.get(i);
 					return true;
 				}
@@ -292,20 +292,20 @@ public class RoomSensor implements Sensor {
 			String n = psString.substring(2,3);
 			String s = psString.substring(3,4);
 			
-			int west = Integer.parseInt(w);
-			int east = Integer.parseInt(e);
+			int east = Integer.parseInt(w);
+			int west = Integer.parseInt(e);
 			int north = Integer.parseInt(n);
 			int south = Integer.parseInt(s);
-			
-			if (west == 1) {
-				this.setWestOpen(true);
-			} else
-				this.setWestOpen(false);
 			
 			if (east == 1) {
 				this.setEastOpen(true);
 			} else
 				this.setEastOpen(false);
+			
+			if (west == 1) {
+				this.setWestOpen(true);
+			} else
+				this.setWestOpen(false);
 			
 			if (north == 1) {
 				this.setNorthOpen(true);
@@ -335,10 +335,10 @@ public class RoomSensor implements Sensor {
 		 */
 		public void setDs(int ds) {
 			if (ds < 1) {
-				this.isClean = false;
+				this.isClean = true;
 			}
 			else
-				this.isClean = true;
+				this.isClean = false;
 			
 			this.ds = ds;
 		}
