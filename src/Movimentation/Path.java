@@ -1,98 +1,145 @@
-package Movimentation;
+package Movementation;
 
 import static java.lang.Math.abs;
 import java.util.ArrayList;
 
 /**
- *This package handles paths in the graph
+ * This package handles paths in the graph
+ *
  * @author Marcio
  */
 public class Path {
+
     private ArrayList<FloorCell> path;
-    
-    public Path(ArrayList<FloorCell> newPath){
-        path=newPath;
+
+    /**
+     * Creates a new Path that is points to newPath
+     * @param newPath A new Path
+     */
+    public Path(ArrayList<FloorCell> newPath) {
+        path = newPath;
     }
-    
-    public Path(){
-        path=new ArrayList<FloorCell>();
+
+    /**
+     * Creates an empty path
+     */
+    public Path() {
+        path = new ArrayList<FloorCell>();
     }
-    
-    public boolean add(FloorCell cell){
+
+    /**
+     * Adds a cell to a path
+     * @param cell Cell to be added to the path
+     */
+    public void add(FloorCell cell) {
         path.add(cell);
-        return isPath();
     }
-    
-    public FloorCell dequeue(){
+
+    /**
+     * Removes and returns the last cell of a path
+     * @return The last cell of a path
+     */
+    public FloorCell dequeue() {
         FloorCell fc = this.path.get(0);
         this.path.remove(0);
         return fc;
     }
-    
-    public int size(){
+
+    /**
+     * Returns the number of cells in a path
+     * @return The number of cells in a path
+     */
+    public int size() {
         return path.size();
     }
 
-    public boolean isPath(){
-        if(path.size()<2)
-            return false;
-        for(int i=0;i<path.size()-1;i++){
-            FloorCell a = path.get(i);
-            FloorCell b = path.get(i+1);
-            if(!((a.getX()==b.getX()&&(abs(a.getY()-b.getY())==1))||(a.getY()==b.getY()&&(abs(a.getX()-b.getX())==1))))
-                return false;
-        }       
-        return true;
+    /**
+     * Returns whether the current path starts in (x,y)
+     * @param x The X coordinate of the possible beginning 
+     * @param y The Y coordinate of the possible beginning 
+     * @return true if the current path starts in (x,y), false otherwise
+     */
+    public boolean startsWith(int x, int y) {
+        return path.get(0).getX() == x && path.get(0).getY() == y;
     }
-    
-    public boolean startsWith(int x, int y){
-        return path.get(0).getX()==x && path.get(0).getY()==y;
+
+    /**
+     * Returns whether the current path ends in (x,y)
+     * @param x The X coordinate of the possible ending 
+     * @param y The Y coordinate of the possible ending 
+     * @return true if the current path ends in (x,y), false otherwise
+     */
+    public boolean endsWith(int x, int y) {
+        return path.get(path.size() - 1).getX() == x && path.get(path.size() - 1).getY() == y;
     }
-    
-    public boolean endsWith(int x, int y){
-        return path.get(path.size()-1).getX()==x && path.get(path.size()-1).getY()==y;
-    }
-    
-    public float cost(){
+
+    /**
+     * Returns the Battery Usage of moving over a path
+     * @return The Battery Usage of moving over a path
+     */
+    public float cost() {
         float cost = Float.POSITIVE_INFINITY;
-        if(path.size()>0)
-            cost=0;
-        for(int i=0;i<path.size()-1;i++){
+        if (path.size() > 0) {
+            cost = 0;
+        }
+        for (int i = 0; i < path.size() - 1; i++) {
             float a = path.get(i).cost();
-            float b = path.get(i+1).cost();
-            cost+=((a+b)/2);
-        } 
+            float b = path.get(i + 1).cost();
+            cost += ((a + b) / 2);
+        }
         return cost;
     }
-    
-    public static Path getPath(ArrayList<Path> paths,int x1, int y1, int x2, int y2){
-        ArrayList<Path> realPaths = new ArrayList<Path>();
-        for(Path auxPath : paths){
-            if(auxPath.path.get(0).getX()==x1 && 
-                    auxPath.path.get(0).getY()==y1 && 
-                    auxPath.path.get(auxPath.path.size()-1).getX()==x2 &&
-                    auxPath.path.get(auxPath.path.size()-1).getY()==y2)
+
+    /**
+     * Returns the path that ends in (x,y) 
+     * @param paths The ArrayList of paths
+     * @param x The X coordinate of the possible ending cell
+     * @param y The Y coordinate of the possible ending cell
+     * @return The path that ends in (x,y) 
+     */
+    public static Path getPath(ArrayList<Path> paths, int x, int y) {
+        for (Path auxPath : paths) {
+            if (auxPath.path.get(auxPath.path.size() - 1).getX() == x
+                    && auxPath.path.get(auxPath.path.size() - 1).getY() == y) {
                 return auxPath;
+            }
         }
-        return new Path();
+        return null;
     }
-    
-     public static int getPathIndex(ArrayList<Path> auxPaths,int x1, int y1, int x2, int y2){
-        for(Path auxPath : auxPaths){
-            if(auxPath.path.get(0).getX()==x1 && 
-                    auxPath.path.get(0).getY()==y1 && 
-                    auxPath.path.get(auxPath.path.size()-1).getX()==x2 &&
-                    auxPath.path.get(auxPath.path.size()-1).getY()==y2)
+
+    /**
+     * Returns the index of the path that ends in (x,y) 
+     * @param auxPaths The ArrayList of paths
+     * @param x The X coordinate of the possible ending cell
+     * @param y The Y coordinate of the possible ending cell
+     * @return The index of the path that ends in (x,y) 
+     */
+    public static int getPathIndex(ArrayList<Path> auxPaths, int x, int y) {
+        for (Path auxPath : auxPaths) {
+            if (auxPath.path.get(auxPath.path.size() - 1).getX() == x
+                    && auxPath.path.get(auxPath.path.size() - 1).getY() == y) {
                 return auxPaths.indexOf(auxPath);
+            }
         }
         return -1;
     }
-     
-     public Path clone(){
-         return new Path((ArrayList<FloorCell>)this.path.clone());
-     }
-     
-     public String toString(){
-         return ("["+this.path.get(0).getX()+","+this.path.get(0).getY()+"] - ["+this.path.get(size()-1).getX()+","+this.path.get(size()-1).getY()+"] - "+this.cost());
-     }
+    
+    /**
+     * Return the ending cell of a path
+     * @return The ending cell of a path
+     */
+    public FloorCell getLastCell(){
+        return path.get(path.size()-1);
+    }
+
+    /**
+     * Clones a path
+     * @return A cloned path
+     */
+    @Override
+    public Path clone() {
+        if(this==null)return null;
+        return new Path((ArrayList<FloorCell>) this.path.clone());
+    }
+
 }
