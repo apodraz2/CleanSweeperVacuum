@@ -1,4 +1,4 @@
-package Movementation;
+package Movimentation;
 
 import java.util.ArrayList;
 

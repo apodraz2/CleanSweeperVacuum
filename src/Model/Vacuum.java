@@ -1,11 +1,11 @@
 package Model;
 
 import Sensor.RoomSensor;
-import Movementation.FloorCell;
+import Movimentation.FloorCell;
 import java.util.ArrayList;
 
-import Movementation.FloorGraph;
-import Movementation.Path;
+import Movimentation.FloorGraph;
+import Movimentation.Path;
 
 /**
  * Class responsible for vacuum movement. Dependent on a Sensor implementation.
@@ -14,7 +14,7 @@ import Movementation.Path;
  *
  * @author adampodraza
  * @author Marcio
- *
+ *i
  */
 public class Vacuum extends Thread {
 
