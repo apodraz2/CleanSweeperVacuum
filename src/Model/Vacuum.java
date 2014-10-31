@@ -1,193 +1,168 @@
 package Model;
 
+import Sensor.RoomSensor;
+import Movimentation.FloorCell;
 import java.util.ArrayList;
 
-import Sensor.Sensor;
+import Movimentation.FloorGraph;
+import Movimentation.Path;
 
 /**
  * Class responsible for vacuum movement. Dependent on a Sensor implementation.
- * 
- * Uses it's own "Cell" class to track it's position- minimizes dependency.
- * @author adampodraza
  *
+ * Uses it's own "Cell" class to track it's position- minimizes dependency.
+ *
+ * @author adampodraza
+ * @author Marcio
+ *i
  */
-
 public class Vacuum extends Thread {
-	
-	private enum Direction{
-		EAST, WEST, NORTH, SOUTH
-	}
-	
-	Direction dir = Direction.NORTH;
-	
-	//List that tracks previously visited cells
-	private ArrayList<Cell> visitedCells = new ArrayList<Cell>();
-	
-	//The current cell location
-	private Cell currentCell;
-	
-	//Dependent Sensor
-	private Sensor sensor;
-	
-	//boolean to turn vacuum on and off
-	public boolean on = true;
-	
-	public Vacuum(Sensor sensor) {
-		this.sensor = sensor;
-		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-	}
-	
-	/**
-	 * A method that moves the vacuum East
-	 * @return
-	 */
-	public boolean goEast() {
-		
-			
-		visitedCells.add(currentCell);
-		sensor.goEast();
-			
-		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-		return true;
-		
-		
-	}
-	
-	/**
-	 * A method that moves the vacuum west
-	 * @return
-	 */
-	public boolean goWest() {
-		
-		visitedCells.add(currentCell);
-			
-		sensor.goWest();
-			
-		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-		return true;
-		
-	}
-	
-	/**
-	 * A method that moves the vacuum North
-	 * @return
-	 */
-	public boolean goNorth() {
-		
-			
-		visitedCells.add(currentCell);
-		sensor.goNorth();
-			
-		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-		return true;
-		
-		
-	}
-	
-	/**
-	 * A method that moves the vacuum South
-	 * @return
-	 */
-	public boolean goSouth() {
-		//movement in the case that the cell to the south has not been visited
-		
-		visitedCells.add(currentCell);
-		sensor.goSouth();
-		currentCell = new Cell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-			
-		return true;
-		
-		
-	}
-	
-	/**
-	 * A basic method that "moves" the vacuum.  
-	 * @return
-	 */
-	
-	public boolean move() {
-		
-		if(dir.equals(Direction.NORTH) && sensor.canGoNorth()) {
-			goNorth();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.NORTH) && !sensor.canGoNorth()) {
-			dir = Direction.WEST;
-			goWest();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.WEST) && sensor.canGoWest()) {
-			goWest();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.WEST) && !sensor.canGoWest()) {
-			dir = Direction.SOUTH;
-			goSouth();
-			System.out.println("Current cell positon is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.SOUTH) && sensor.canGoSouth()) {
-			goSouth();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.SOUTH) && !sensor.canGoSouth()) {
-			dir = Direction.EAST;
-			goEast();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.EAST) && sensor.canGoEast()) {
-			goEast();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		if(dir.equals(Direction.EAST) && !sensor.canGoEast()) {
-			dir = Direction.NORTH;
-			goNorth();
-			System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-			return true;
-		}
-		return false;
-	}
-	
-	
-	public void run() {
-		// TODO Auto-generated method stub
-		System.out.println("Vacuum is running.");
-		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-		while (on) {
-			this.move();
-		}
-	}
-	
-	/**
-	 * A local class to store cell objects
-	 * @author adampodraza
-	 *
-	 */
-	private static class Cell {
-		private int x;
-		private int y;
-		
-		Cell(int x, int y) {
-			this.x = x;
-			this.y = y;
-		}
 
-		public int getX() {
-			return x;
-		}
+    //List that tracks previously visited cells
+    private FloorGraph visitedCells = new FloorGraph();
 
-		public int getY() {
-			return y;
-		}
-		
-	}
+    //The current cell location
+    private FloorCell currentCell;
+
+    //Dependent Sensor
+    private RoomSensor sensor;
+
+    //boolean to turn vacuum on and off
+    public boolean on = true;
+
+    /**
+     * Starts up the vacuum
+     *
+     * @param sensor The Vacuum sensor
+     */
+    public Vacuum(RoomSensor sensor) {
+        this.sensor = sensor;
+        currentCell = new FloorCell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
+        visitedCells.add(0, 0);
+        sensor.setCurrentCell(0, 0);
+        stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY()).getCell());
+    }
+
+    /**
+     * Moves the robot, based in the closest unknown cells first, and returns to
+     * the charging station at the end
+     */
+    public void move() {
+        ArrayList<FloorCell> toVisit = new ArrayList<>();
+        do {
+            toVisit = visitedCells.unvisitedCellsNeighbor();
+            //The sensor tries to go to a adjacent cell if it has not been visited
+
+            if (sensor.canGoSouth() && visitedCells.findCell(currentCell.getX(), currentCell.getY() - 1) == null) {
+                visitedCells.add(currentCell.getX(), currentCell.getY() - 1);
+                stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY() - 1).getCell());
+            } else if (sensor.canGoWest() && visitedCells.findCell(currentCell.getX() - 1, currentCell.getY()) == null) {
+                visitedCells.add(currentCell.getX() - 1, currentCell.getY());
+                stepInto(visitedCells.findCell(currentCell.getX() - 1, currentCell.getY()).getCell());
+            } else if (sensor.canGoEast() && visitedCells.findCell(currentCell.getX() + 1, currentCell.getY()) == null) {
+                visitedCells.add(currentCell.getX() + 1, currentCell.getY());
+                stepInto(visitedCells.findCell(currentCell.getX() + 1, currentCell.getY()).getCell());
+            } else if (sensor.canGoNorth() && visitedCells.findCell(currentCell.getX(), currentCell.getY() + 1) == null) {
+                visitedCells.add(currentCell.getX(), currentCell.getY() + 1);
+                stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY() + 1).getCell());
+            } //If all adjacent cells have been visited, the robot tries to acces the closest cell
+            //with unvisited adjancent cells
+            else {
+                ArrayList<Path> shortestPaths = visitedCells.shortestPaths(currentCell.getX(), currentCell.getY());
+                Path shortestPath = null;
+                FloorGraph graph = visitedCells;
+                for (Path path : shortestPaths) {
+                    if (path.startsWith(currentCell.getX(), currentCell.getY())) {
+                        for (FloorCell cell : toVisit) {
+                            if (path.endsWith(cell.getX(), cell.getY())) {
+                                if (shortestPath != null) {
+                                    if (path.cost() < shortestPath.cost()) {
+                                        shortestPath = path;
+                                    }
+                                } else {
+                                    shortestPath = path;
+                                }
+                            }
+                        }
+                    }
+                }
+                moveThroughPath(shortestPath);
+            }
+        } while (!toVisit.isEmpty());
+        goRecharge();
+        on = false;
+    }
+
+    /**
+     * Returns to the charging station
+     */
+    public void goRecharge() {
+        ArrayList<Path> shortestPaths = visitedCells.shortestPaths(currentCell.getX(), currentCell.getY());
+        Path shortestPath = null;
+        FloorGraph graph = visitedCells;
+        for (Path path : shortestPaths) {
+            if (path.endsWith(0, 0)) {
+                if (shortestPath != null) {
+                    if (path.cost() < shortestPath.cost()) {
+                        shortestPath = path;
+                    }
+                } else {
+                    shortestPath = path;
+                }
+            }
+        }
+        moveThroughPath(shortestPath);
+    }
+
+    /**
+     * Moves the vacuum through a path
+     *
+     * @param path The path to be made
+     */
+    public void moveThroughPath(Path path) {
+        while (path != null && path.size() != 0) {
+            FloorCell nextCell = path.dequeue();
+            stepInto(nextCell);
+        }
+    }
+
+    /**
+     * Moves the vacuum into a adjacent cell
+     *
+     * @param cell The cell that the vacuum will go over
+     */
+    public void stepInto(FloorCell cell) {
+        if (!currentCell.equals(cell)) {
+            currentCell = cell;
+            sensor.setCurrentCell(currentCell.getX(), currentCell.getY());
+        }
+        if (!sensor.canGoEast()) {
+            visitedCells.findCell(cell.getX(), cell.getY()).setEast(null);
+        }
+        if (!sensor.canGoWest()) {
+            visitedCells.findCell(cell.getX(), cell.getY()).setWest(null);
+        }
+        if (!sensor.canGoNorth()) {
+            visitedCells.findCell(cell.getX(), cell.getY()).setNorth(null);
+        }
+        if (!sensor.canGoSouth()) {
+            visitedCells.findCell(cell.getX(), cell.getY()).setSouth(null);
+        }
+        System.out.println("Visiting now : " + currentCell);
+    }
+
+    /**
+     * Turns the vacuum on
+     */
+    public void run() {
+        // TODO Auto-generated method stub
+        System.out.println("Vacuum is running.");
+//		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
+        while (on) {
+            this.move();
+            System.out.println("All the following cells have been visited:");
+            System.out.println(visitedCells);
+        }
+    }
+
 }

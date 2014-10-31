@@ -53,7 +53,7 @@
 		<cell xs ='0' ys ='8' ss ='2' ps ='1211' ds ='1' cs ='0'/>
 		<cell xs ='1' ys ='8' ss ='2' ps ='1111' ds ='1' cs ='0'/>
 		<cell xs ='2' ys ='8' ss ='2' ps ='1111' ds ='1' cs ='0'/>
-		<cell xs ='3' ys ='8' ss ='2' ps ='2111' ds ='1' cs ='0'/>
+		<cell xs ='3' ys ='8' ss ='2' ps ='2112' ds ='1' cs ='0'/>
 		<cell xs ='0' ys ='9' ss ='2' ps ='1221' ds ='1' cs ='0'/>
 		<cell xs ='1' ys ='9' ss ='2' ps ='1121' ds ='1' cs ='0'/>
 		<cell xs ='2' ys ='9' ss ='2' ps ='1121' ds ='1' cs ='0'/>
@@ -88,7 +88,7 @@
 		<cell xs ='7' ys ='6' ss ='1' ps ='1111' ds ='1' cs ='0'/>
 		<cell xs ='8' ys ='6' ss ='1' ps ='1121' ds ='1' cs ='0'/>
 		<cell xs ='9' ys ='6' ss ='1' ps ='2121' ds ='1' cs ='0'/>
-		<cell xs ='6' ys ='7' ss ='1' ps ='1211' ds ='1' cs ='0'/>
+		<cell xs ='6' ys ='7' ss ='1' ps ='1112' ds ='1' cs ='0'/>
 		<cell xs ='7' ys ='7' ss ='1' ps ='2111' ds ='1' cs ='0'/>
 		<cell xs ='6' ys ='8' ss ='1' ps ='1221' ds ='1' cs ='0'/>
 		<cell xs ='7' ys ='8' ss ='1' ps ='2121' ds ='1' cs ='0'/>
