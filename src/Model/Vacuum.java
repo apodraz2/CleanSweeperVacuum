@@ -1,7 +1,9 @@
 package Model;
 
 import Sensor.RoomSensor;
+import Controller.Controller;
 import Movimentation.FloorCell;
+
 import java.util.ArrayList;
 
 import Movimentation.FloorGraph;
@@ -29,13 +31,16 @@ public class Vacuum extends Thread {
 
     //boolean to turn vacuum on and off
     public boolean on = true;
+    
+    public boolean startingPointSet = false;
 
     /**
      * Starts up the vacuum
      *
      * @param sensor The Vacuum sensor
+     * @throws InterruptedException 
      */
-    public Vacuum(RoomSensor sensor) {
+    public Vacuum(RoomSensor sensor) throws InterruptedException {
         this.sensor = sensor;
         currentCell = new FloorCell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
         visitedCells.add(0, 0);
@@ -46,8 +51,12 @@ public class Vacuum extends Thread {
     /**
      * Moves the robot, based in the closest unknown cells first, and returns to
      * the charging station at the end
+     * @throws InterruptedException 
      */
-    public void move() {
+    public void move() throws InterruptedException {
+    	System.out.println("Setting starting floor type for cell (" + sensor.getCurrentCellX() + ", " + sensor.getCurrentCellY()+")");
+    	Controller.getInstance().getBattery().setStartingFloorType(sensor.getFloorType());
+    	startingPointSet = true;
         ArrayList<FloorCell> toVisit = new ArrayList<>();
         do {
             toVisit = visitedCells.unvisitedCellsNeighbor();
@@ -95,8 +104,9 @@ public class Vacuum extends Thread {
 
     /**
      * Returns to the charging station
+     * @throws InterruptedException 
      */
-    public void goRecharge() {
+    public void goRecharge() throws InterruptedException {
         ArrayList<Path> shortestPaths = visitedCells.shortestPaths(currentCell.getX(), currentCell.getY());
         Path shortestPath = null;
         FloorGraph graph = visitedCells;
@@ -118,8 +128,9 @@ public class Vacuum extends Thread {
      * Moves the vacuum through a path
      *
      * @param path The path to be made
+     * @throws InterruptedException 
      */
-    public void moveThroughPath(Path path) {
+    public void moveThroughPath(Path path) throws InterruptedException {
         while (path != null && path.size() != 0) {
             FloorCell nextCell = path.dequeue();
             stepInto(nextCell);
@@ -130,8 +141,9 @@ public class Vacuum extends Thread {
      * Moves the vacuum into a adjacent cell
      *
      * @param cell The cell that the vacuum will go over
+     * @throws InterruptedException 
      */
-    public void stepInto(FloorCell cell) {
+    public void stepInto(FloorCell cell) throws InterruptedException {
         if (!currentCell.equals(cell)) {
             currentCell = cell;
             sensor.setCurrentCell(currentCell.getX(), currentCell.getY());
@@ -148,10 +160,29 @@ public class Vacuum extends Thread {
         if (!sensor.canGoSouth()) {
             visitedCells.findCell(cell.getX(), cell.getY()).setSouth(null);
         }
+        
         System.out.println("Visiting now : " + currentCell);
+        System.out.println("Dirt Remaining before cleaning: " + sensor.getDirtRemaining());
+        if(sensor.getDirtRemaining() != 0 && startingPointSet == true){
+        	Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
+        	performCleaningFunction(sensor.getDirtRemaining());
+        	System.out.println(Controller.getInstance().getBattery().getBatteryLife());
+        }
+        
+    
+//        
     }
 
-    /**
+    private void performCleaningFunction(int dirtRemaining) throws InterruptedException {
+    	while(!sensor.isClean() && sensor.getDirtRemaining() != 0){
+			Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
+			sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+			System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
+		}
+    	
+	}
+
+	/**
      * Turns the vacuum on
      */
     public void run() {
@@ -159,9 +190,15 @@ public class Vacuum extends Thread {
         System.out.println("Vacuum is running.");
 //		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
         while (on) {
-            this.move();
+            try {
+				this.move();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
             System.out.println("All the following cells have been visited:");
             System.out.println(visitedCells);
+            System.out.println(Controller.getInstance().getBattery().getStartingFloorType());
         }
     }
 
