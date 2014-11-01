@@ -98,6 +98,7 @@ public class Vacuum extends Thread {
                 moveThroughPath(shortestPath);
             }
         } while (!toVisit.isEmpty());
+        System.out.println("Need to Recharge");
         goRecharge();
         on = false;
     }
@@ -166,7 +167,7 @@ public class Vacuum extends Thread {
         if(sensor.getDirtRemaining() != 0 && startingPointSet == true){
         	Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
         	performCleaningFunction(sensor.getDirtRemaining());
-        	System.out.println(Controller.getInstance().getBattery().getBatteryLife());
+        	System.out.println("Battery Life: " + Controller.getInstance().getBattery().getBatteryLife());
         }
         
     
