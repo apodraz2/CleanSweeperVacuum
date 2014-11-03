@@ -25,6 +25,11 @@ public class FloorCell {
      * The floor type of the cell
      */
     int floorType;
+    
+    /**
+     * True if the cell is a charging station, false otherwise
+     */
+    private boolean chargingStation;
 
     /**
      * Creates a new floor cell
@@ -118,5 +123,13 @@ public class FloorCell {
     @Override
     public String toString() {
         return "(" + getX() + "," + getY() + ")";
+    }
+    
+    public boolean isChargingStation(){
+        return chargingStation;
+    }
+    
+    public void setChargingStation(boolean chargingStation){
+        this.chargingStation = chargingStation;
     }
 }

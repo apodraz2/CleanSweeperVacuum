@@ -79,6 +79,7 @@ public class RoomSensor implements Sensor {
 	 * set amount of dirt remaining at location (need to update to clean or partially clean after every "cleaning")
 	 */
 	public void setDirtRemaining(int dirt) {
+		System.out.println("Setting dirt remaining to: " + dirt);
 		currentCell.setDs(dirt);
 	}
 	
@@ -347,11 +348,11 @@ public class RoomSensor implements Sensor {
 		 * @param ds
 		 */
 		public void setDs(int ds) {
-			if (ds < 1) {
-				this.isClean = false;
+			if (ds == 0) {
+				this.isClean = true;
 			}
 			else
-				this.isClean = true;
+				this.isClean = false;
 			
 			this.ds = ds;
 		}

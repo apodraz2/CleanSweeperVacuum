@@ -15,13 +15,12 @@ import Movimentation.Path;
  * Uses it's own "Cell" class to track it's position- minimizes dependency.
  *
  * @author adampodraza
- * @author Marcio
- *i
+ * @author Marcio i
  */
 public class Vacuum extends Thread {
 
     //List that tracks previously visited cells
-    private FloorGraph visitedCells = new FloorGraph();
+    private FloorGraph floorGraph = new FloorGraph();
 
     //The current cell location
     private FloorCell currentCell;
@@ -31,55 +30,61 @@ public class Vacuum extends Thread {
 
     //boolean to turn vacuum on and off
     public boolean on = true;
-    
+
     public boolean startingPointSet = false;
 
     /**
      * Starts up the vacuum
      *
      * @param sensor The Vacuum sensor
-     * @throws InterruptedException 
+     * @throws InterruptedException
      */
     public Vacuum(RoomSensor sensor) throws InterruptedException {
         this.sensor = sensor;
         currentCell = new FloorCell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
-        visitedCells.add(0, 0);
+        floorGraph.add(0, 0);
         sensor.setCurrentCell(0, 0);
-        stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY()).getCell());
+        stepInto(floorGraph.findCell(currentCell.getX(), currentCell.getY()).getCell());
     }
 
     /**
      * Moves the robot, based in the closest unknown cells first, and returns to
      * the charging station at the end
-     * @throws InterruptedException 
+     *
+     * @throws InterruptedException
      */
     public void move() throws InterruptedException {
-    	System.out.println("Setting starting floor type for cell (" + sensor.getCurrentCellX() + ", " + sensor.getCurrentCellY()+")");
-    	Controller.getInstance().getBattery().setStartingFloorType(sensor.getFloorType());
-    	startingPointSet = true;
+        System.out.println("Setting starting floor type for cell (" + sensor.getCurrentCellX() + ", " + sensor.getCurrentCellY() + ")");
+        Controller.getInstance().getBattery().setStartingFloorType(sensor.getFloorType());
+        startingPointSet = true;
         ArrayList<FloorCell> toVisit = new ArrayList<>();
         do {
-            toVisit = visitedCells.unvisitedCellsNeighbor();
+            toVisit = floorGraph.hasToBeVisited();
             //The sensor tries to go to a adjacent cell if it has not been visited
 
-            if (sensor.canGoSouth() && visitedCells.findCell(currentCell.getX(), currentCell.getY() - 1) == null) {
-                visitedCells.add(currentCell.getX(), currentCell.getY() - 1);
-                stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY() - 1).getCell());
-            } else if (sensor.canGoWest() && visitedCells.findCell(currentCell.getX() - 1, currentCell.getY()) == null) {
-                visitedCells.add(currentCell.getX() - 1, currentCell.getY());
-                stepInto(visitedCells.findCell(currentCell.getX() - 1, currentCell.getY()).getCell());
-            } else if (sensor.canGoEast() && visitedCells.findCell(currentCell.getX() + 1, currentCell.getY()) == null) {
-                visitedCells.add(currentCell.getX() + 1, currentCell.getY());
-                stepInto(visitedCells.findCell(currentCell.getX() + 1, currentCell.getY()).getCell());
-            } else if (sensor.canGoNorth() && visitedCells.findCell(currentCell.getX(), currentCell.getY() + 1) == null) {
-                visitedCells.add(currentCell.getX(), currentCell.getY() + 1);
-                stepInto(visitedCells.findCell(currentCell.getX(), currentCell.getY() + 1).getCell());
+            Path closestChargingStation = floorGraph.getClosestChargingStation(currentCell);
+
+            if (!canMakeOneStep(closestChargingStation) || !canStillClean(closestChargingStation)) {
+                goRecharge();
+                continue;
+            }
+            if (sensor.canGoSouth() && floorGraph.findCell(currentCell.getX(), currentCell.getY() - 1) == null) {
+                floorGraph.add(currentCell.getX(), currentCell.getY() - 1);
+                stepInto(floorGraph.findCell(currentCell.getX(), currentCell.getY() - 1).getCell());
+            } else if (sensor.canGoWest() && floorGraph.findCell(currentCell.getX() - 1, currentCell.getY()) == null) {
+                floorGraph.add(currentCell.getX() - 1, currentCell.getY());
+                stepInto(floorGraph.findCell(currentCell.getX() - 1, currentCell.getY()).getCell());
+            } else if (sensor.canGoEast() && floorGraph.findCell(currentCell.getX() + 1, currentCell.getY()) == null) {
+                floorGraph.add(currentCell.getX() + 1, currentCell.getY());
+                stepInto(floorGraph.findCell(currentCell.getX() + 1, currentCell.getY()).getCell());
+            } else if (sensor.canGoNorth() && floorGraph.findCell(currentCell.getX(), currentCell.getY() + 1) == null) {
+                floorGraph.add(currentCell.getX(), currentCell.getY() + 1);
+                stepInto(floorGraph.findCell(currentCell.getX(), currentCell.getY() + 1).getCell());
             } //If all adjacent cells have been visited, the robot tries to acces the closest cell
             //with unvisited adjancent cells
             else {
-                ArrayList<Path> shortestPaths = visitedCells.shortestPaths(currentCell.getX(), currentCell.getY());
+                ArrayList<Path> shortestPaths = floorGraph.shortestPaths(currentCell.getX(), currentCell.getY());
                 Path shortestPath = null;
-                FloorGraph graph = visitedCells;
                 for (Path path : shortestPaths) {
                     if (path.startsWith(currentCell.getX(), currentCell.getY())) {
                         for (FloorCell cell : toVisit) {
@@ -95,41 +100,36 @@ public class Vacuum extends Thread {
                         }
                     }
                 }
-                moveThroughPath(shortestPath);
+                if (shortestPath != null && canGoTo(shortestPath)) {
+                    moveThroughPath(shortestPath);
+                } else {
+                    goRecharge();
+                }
+
             }
         } while (!toVisit.isEmpty());
-        System.out.println("Need to Recharge");
         goRecharge();
         on = false;
+        Controller.getInstance().getBattery().addCommand("shutdown");
+        Controller.getInstance().getBattery().executeCommand();
     }
 
     /**
      * Returns to the charging station
-     * @throws InterruptedException 
+     *
+     * @throws InterruptedException
      */
     public void goRecharge() throws InterruptedException {
-        ArrayList<Path> shortestPaths = visitedCells.shortestPaths(currentCell.getX(), currentCell.getY());
-        Path shortestPath = null;
-        FloorGraph graph = visitedCells;
-        for (Path path : shortestPaths) {
-            if (path.endsWith(0, 0)) {
-                if (shortestPath != null) {
-                    if (path.cost() < shortestPath.cost()) {
-                        shortestPath = path;
-                    }
-                } else {
-                    shortestPath = path;
-                }
-            }
-        }
-        moveThroughPath(shortestPath);
+        moveThroughPath(floorGraph.getClosestChargingStation(currentCell));
+        Controller.getInstance().getBattery().addCommand("charge");
+        Controller.getInstance().getBattery().executeCommand();
     }
 
     /**
      * Moves the vacuum through a path
      *
      * @param path The path to be made
-     * @throws InterruptedException 
+     * @throws InterruptedException
      */
     public void moveThroughPath(Path path) throws InterruptedException {
         while (path != null && path.size() != 0) {
@@ -142,48 +142,66 @@ public class Vacuum extends Thread {
      * Moves the vacuum into a adjacent cell
      *
      * @param cell The cell that the vacuum will go over
-     * @throws InterruptedException 
+     * @throws InterruptedException
      */
     public void stepInto(FloorCell cell) throws InterruptedException {
+        if (cell.getX() == 0 && cell.getY() == 0) {
+            cell.setChargingStation(true);
+        }
         if (!currentCell.equals(cell)) {
             currentCell = cell;
             sensor.setCurrentCell(currentCell.getX(), currentCell.getY());
         }
         if (!sensor.canGoEast()) {
-            visitedCells.findCell(cell.getX(), cell.getY()).setEast(null);
+            floorGraph.findCell(cell.getX(), cell.getY()).setEast(null);
         }
         if (!sensor.canGoWest()) {
-            visitedCells.findCell(cell.getX(), cell.getY()).setWest(null);
+            floorGraph.findCell(cell.getX(), cell.getY()).setWest(null);
         }
         if (!sensor.canGoNorth()) {
-            visitedCells.findCell(cell.getX(), cell.getY()).setNorth(null);
+            floorGraph.findCell(cell.getX(), cell.getY()).setNorth(null);
         }
         if (!sensor.canGoSouth()) {
-            visitedCells.findCell(cell.getX(), cell.getY()).setSouth(null);
+            floorGraph.findCell(cell.getX(), cell.getY()).setSouth(null);
         }
-        
+
         System.out.println("Visiting now : " + currentCell);
         System.out.println("Dirt Remaining before cleaning: " + sensor.getDirtRemaining());
-        if(sensor.getDirtRemaining() != 0 && startingPointSet == true){
-        	Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
-        	performCleaningFunction(sensor.getDirtRemaining());
-        	System.out.println("Battery Life: " + Controller.getInstance().getBattery().getBatteryLife());
+        if (sensor.getDirtRemaining() != 0 && startingPointSet == true) {
+            Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
+            performCleaningFunction();
+            System.out.println(Controller.getInstance().getBattery().getBatteryLife());
         }
-        
-    
+
 //        
     }
 
-    private void performCleaningFunction(int dirtRemaining) throws InterruptedException {
-    	while(!sensor.isClean() && sensor.getDirtRemaining() != 0){
-			Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
-			sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
-			System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
-		}
-    	
-	}
+    private void performCleaningFunction() throws InterruptedException {
+        while (!sensor.isClean() && sensor.getDirtRemaining() != 0) {
+            Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
+            sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+            System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
+        }
+        floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();
+    }
 
-	/**
+    private boolean canStillClean(Path closestChargingStation) {
+        double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
+        return remainingBattery - closestChargingStation.cost() >= 1;
+    }
+
+    private boolean canGoTo(Path shortestPath) {
+        double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
+        FloorCell destination = shortestPath.getLastCell();
+        return remainingBattery - floorGraph.getClosestChargingStationTo(destination.getX(), destination.getY()).cost() - shortestPath.cost() >= 1;
+    }
+
+    private boolean canMakeOneStep(Path closestChargingStation) {
+        double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
+        return remainingBattery - closestChargingStation.cost() >= 6;
+    }
+
+    /**
      * Turns the vacuum on
      */
     public void run() {
@@ -192,13 +210,13 @@ public class Vacuum extends Thread {
 //		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
         while (on) {
             try {
-				this.move();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+                this.move();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
             System.out.println("All the following cells have been visited:");
-            System.out.println(visitedCells);
+            System.out.println(floorGraph);
             System.out.println(Controller.getInstance().getBattery().getStartingFloorType());
         }
     }

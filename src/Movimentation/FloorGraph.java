@@ -133,15 +133,15 @@ public class FloorGraph {
     }
 
     /**
-     * Return an ArrayList of all cells that their neighbors have not been
+     * Return an ArrayList of all cells that have to be visited
      * visited
      *
      * @return all cells that their neighbors have not been visited
      */
-    public ArrayList<FloorCell> unvisitedCellsNeighbor() {
+    public ArrayList<FloorCell> hasToBeVisited() {
         ArrayList<FloorCell> toVisit = new ArrayList<>();
         for (GraphCell cell : graph) {
-            if (cell.mustBeVisited()) {
+            if (cell.mustBeVisited()||!cell.isClean()) {
                 toVisit.add(cell.getCell());
             }
         }
@@ -191,4 +191,24 @@ public class FloorGraph {
         return output;
     }
 
+    public Path getClosestChargingStation(FloorCell currentCell) {
+        return getClosestChargingStationTo(currentCell.getX(), currentCell.getY());
+    }
+
+    public Path getClosestChargingStationTo(int x, int y) {
+        ArrayList<Path> shortestPaths = this.shortestPaths(x, y);
+        Path shortestPath = null;
+        for (Path path : shortestPaths) {
+            if (path.getLastCell().isChargingStation()) {
+                if (shortestPath != null) {
+                    if (path.cost() < shortestPath.cost()) {
+                        shortestPath = path;
+                    }
+                } else {
+                    shortestPath = path;
+                }
+            }
+        }
+        return shortestPath;
+    }
 }
