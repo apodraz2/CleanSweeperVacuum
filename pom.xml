@@ -22,10 +22,7 @@
     </dependency>
   </dependencies>
   
- 	<modules>
- 		<module></module>
- 		<module></module>
- 	</modules>
+ 	
   
   <repositories>
   	<repository>
