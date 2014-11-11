@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Battery;
+import Model.DirtCapacity;
 import Model.Vacuum;
 import Sensor.RoomSensor;
 
@@ -11,7 +12,9 @@ import Sensor.RoomSensor;
 public class Controller {
 	public volatile static Controller instance;
 	public Battery battery;
+	public DirtCapacity dirtCapacity;
 	public Vacuum vacuum;
+	
     /**
      * Represents whether the vacuum is on or not
      */
@@ -26,14 +29,20 @@ public class Controller {
         }
         return instance;
     }
+	
+	
 	public Battery getBattery(){
 		return this.battery;
 	}
     
+	public DirtCapacity getDirtCapacity(){
+		return this.dirtCapacity;
+	}
     public void initEverything() throws InterruptedException{
     	on = true;
 		initBattery();
 		initVacuum();
+		initDirtCapacity();
 	}
     
     private void initVacuum() throws InterruptedException {
@@ -45,6 +54,11 @@ public class Controller {
 	private void initBattery() {
 		battery = new Battery();
 		new Thread(battery).start();
+	}
+	
+	private void initDirtCapacity() {
+		dirtCapacity = new DirtCapacity(0,50);
+		
 	}
 
 }

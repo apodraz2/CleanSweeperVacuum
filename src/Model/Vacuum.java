@@ -201,6 +201,9 @@ public class Vacuum extends Thread {
         return remainingBattery - closestChargingStation.cost() >= 6;
     }
 
+    private boolean canTakeMoreDirt(){
+    	return Controller.getInstance().getDirtCapacity().checkIsFull();
+    }
     /**
      * Turns the vacuum on
      */
