@@ -67,6 +67,10 @@ public class Vacuum extends Thread {
             if (!canMakeOneStep(closestChargingStation) || !canStillClean(closestChargingStation)) {
                 goRecharge();
                 continue;
+            }else if(!canTakeMoreDirt()){
+            	 goRecharge();
+            	 emptyMe();
+                 continue;
             }
             if (sensor.canGoSouth() && floorGraph.findCell(currentCell.getX(), currentCell.getY() - 1) == null) {
                 floorGraph.add(currentCell.getX(), currentCell.getY() - 1);
@@ -204,10 +208,14 @@ public class Vacuum extends Thread {
         return remainingBattery - closestChargingStation.cost() >= 6;
     }
 
-    private boolean canTakeMoreDirt(){
-    	return Controller.getInstance().getDirtCapacity().checkIsFull();
+    private boolean canTakeMoreDirt() throws InterruptedException{
+    	return !Controller.getInstance().getDirtCapacity().getIsFull();
     }
-    /**
+    
+    public void emptyMe() throws InterruptedException {
+    	Controller.getInstance().getDirtCapacity().emptyMe();
+    }
+    /**!
      * Turns the vacuum on
      */
     public void run() {

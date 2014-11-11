@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 /**
  * @author Sabrina Guillaume
  * @see java.util.ArrayList
@@ -24,8 +25,17 @@ public class DirtCapacity  {
 		return this.dirtLevel;
 	}
 	
-	public Boolean checkIsFull(){
-		if (this.dirtLevel == this.maxDirtLevel){
+	public int getMaxDirtLevel(){
+		return this.maxDirtLevel;
+	}
+	
+	public float getDirtLevelPercent(){
+		return (this.dirtLevel*2);
+	}
+	
+	public Boolean checkIsFull() throws InterruptedException{
+		
+		if (this.dirtLevel >= this.maxDirtLevel - 4){
 			setIsFull(true);
 			System.out.println("Vacuum Dirt is now full");
 		}else
@@ -34,28 +44,38 @@ public class DirtCapacity  {
 		return isFull;
 	}
 	
+	public boolean getIsFull(){
+		return this.isFull;
+	}
+	
 	public void setIsFull(Boolean isFull){
 		this.isFull = isFull;
 	}
 	
-	public void addDirt(int dirt){
+	public void addDirt(int dirt) throws InterruptedException{
 		this.dirtLevel += dirt;
 		checkIsFull();
 	}
 	
 	public void emptyMe() throws InterruptedException{
-		while (dirtLevel <= 50) {
-            Thread.sleep(50);
-             dirtLevel--;
-          
-        }
-		setIsFull(false);
-		System.out.println("Vacuum Dirt is now empty");
+		Scanner yesEmptyMe = new Scanner( System.in );
+		String userResponse;
+		
+		System.out.println("Do you want to empty the Vacuum (Enter y for yes)?  ");
+		userResponse = yesEmptyMe.next();
+		
+			this.dirtLevel = 0;      
+			setIsFull(false);
+			System.out.println("Vacuum Dirt is now empty");
+		
+		
+		//yesEmptyMe.close();
+		
 	}
 
 	public void printDirtLevel(){
 		System.out.println("Current Dirt Level:" + getDirtLevel());
-		System.out.println("Dirt Level %:" + getDirtLevel()/maxDirtLevel);
+		System.out.println("Dirt Level:" + getDirtLevelPercent() + "%");
 	}
 
 	
