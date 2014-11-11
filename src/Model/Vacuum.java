@@ -180,6 +180,9 @@ public class Vacuum extends Thread {
         while (!sensor.isClean() && sensor.getDirtRemaining() != 0) {
             Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
             sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+            //Add Dirt Capacity to monitor dirt level
+            Controller.getInstance().getDirtCapacity().addDirt(1);
+            Controller.getInstance().getDirtCapacity().printDirtLevel();
             System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
         }
         floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();

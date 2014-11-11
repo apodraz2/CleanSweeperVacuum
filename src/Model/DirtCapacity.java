@@ -53,6 +53,10 @@ public class DirtCapacity  {
 		System.out.println("Vacuum Dirt is now empty");
 	}
 
+	public void printDirtLevel(){
+		System.out.println("Current Dirt Level:" + getDirtLevel());
+		System.out.println("Dirt Level %:" + getDirtLevel()/maxDirtLevel);
+	}
 
 	
 	
