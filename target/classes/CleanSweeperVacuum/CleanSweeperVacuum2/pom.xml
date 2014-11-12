@@ -11,7 +11,7 @@
 		<groupId>CleanSweeperVacuum</groupId>
 		<artifactId>CleanSweeperVacuum</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath> 
+		<relativePath>../CleanSweeperVacuum/pom.xml</relativePath> 
 	</parent>
 
 	<version>1.0-SNAPSHOT</version>
