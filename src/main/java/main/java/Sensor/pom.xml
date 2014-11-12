@@ -8,7 +8,7 @@
 	
 	<parent>
 		<groupId>CleanSweeperVacuum</groupId>
-		<artifactId>CleanSweeperVacuum</artifactId>
+		<artifactId>CleanSweeperVacuum1</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../CleanSweeperVacuum/pom.xml</relativePath> 
 	</parent>
