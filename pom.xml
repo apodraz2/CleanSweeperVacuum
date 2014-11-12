@@ -5,7 +5,7 @@
   <groupId>org.maven.CleanSweeperVacuum</groupId>
   <artifactId>CleanSweeperVacuum</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
 
   <name>CleanSweeperVacuum</name>
   <url>http://maven.apache.org</url>
@@ -14,10 +14,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-  <modules>
+  <!-- <modules>
   	<module>/src/main/java/CleanSweeperVacuum/CleanSweeperVacuum2</module>
   	<module>/src/main/java/main/java/Sensor</module>
-  </modules>
+  </modules> -->
 
 	<build>
         <pluginManagement>
@@ -26,8 +26,8 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <configuration>
-                        <source>1.5</source>
-                        <target>1.5</target>
+                        <source>1.7</source>
+                        <target>1.7</target>
                     </configuration>
                 </plugin>
             </plugins>
