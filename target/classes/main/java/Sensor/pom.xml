@@ -13,7 +13,7 @@
 	
 	
 	<artifactId>Sensor</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	<name>Sensor Module</name>
 	
 	<build>

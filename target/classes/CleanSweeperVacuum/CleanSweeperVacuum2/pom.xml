@@ -12,7 +12,7 @@
 	</parent>
 
 	<artifactId>CleanSweeperVacuum</artifactId>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 	
 	<name>Controller Module</name>	
 	
