@@ -2,7 +2,7 @@ package controller;
 
 
 
-import sensor2.*;
+import sensor2.target.classes.org.sensor2.RoomSensor.class*;
 
 /**
  *
