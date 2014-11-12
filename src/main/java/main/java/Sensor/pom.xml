@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.maven.CleanSweeperVacuum</groupId>
-  <artifactId>/src/main/java/main/java/Sensor</artifactId>
+  <artifactId>Sensor</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   <parent>
