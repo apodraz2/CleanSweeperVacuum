@@ -2,8 +2,10 @@ package controller.src.main.java.org.controller;
 
 import java.util.ArrayList;
 
-import sensor.src.main.java.org.sensor.Memory;
-import sensor.src.main.java.org.sensor.RoomSensor.Cell;
+import controller.sensor.src.main.java.org.sensor.Memory;
+import controller.sensor.src.main.java.org.sensor.RoomSensor.Cell;
+
+
 
 
 public class Diagnostics extends Memory{

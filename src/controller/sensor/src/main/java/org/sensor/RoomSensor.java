@@ -1,4 +1,5 @@
-package sensor.src.main.java.org.sensor;
+package controller.sensor.src.main.java.org.sensor;
+
 
 import java.util.ArrayList;
 

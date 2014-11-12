@@ -1,4 +1,4 @@
-package sensor.src.test.java.org.sensor;
+package controller.sensor.src.test.java.org.sensor;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

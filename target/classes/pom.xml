@@ -17,7 +17,7 @@
   <modules>
   	
   	<module>controller</module>
-  	<module>sensor</module>
+  	<module>controller/sensor</module>
   </modules>
 
 	<build>

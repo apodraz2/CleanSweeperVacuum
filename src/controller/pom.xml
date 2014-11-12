@@ -22,6 +22,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>CleanSweeperVacuum</groupId>
+    	<artifactId>sensor</artifactId>
+    	<systemPath>/src/controller/sensor</systemPath>
+    </dependency>
    
   </dependencies>
 </project>
