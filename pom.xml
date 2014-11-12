@@ -5,11 +5,13 @@
   <groupId>CleanSweep</groupId>
   <artifactId>CleanSweeperVacuum</artifactId>
   <version>1.0-SNAPSHOT</version>
-
-  <name>CleanSweeperVacuum</name>
+	<packaging>pom</packaging>
+  
+  
+  <name>Clean Sweep Vacuum System</name>
   <url>http://maven.apache.org</url>
   
-  <packaging>pom</packaging>
+  
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -20,5 +22,6 @@
   	<module>/src/main/java/main/java/Sensor</module>
   </modules>
 
+	
   
 </project>
