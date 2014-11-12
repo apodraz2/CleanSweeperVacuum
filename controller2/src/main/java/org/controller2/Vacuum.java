@@ -6,7 +6,7 @@ package controller;
 
 import java.util.ArrayList;
 
-import sensor.RoomSensor;
+import sensor2.src.main.java.org.sensor2.*;
 
 
 

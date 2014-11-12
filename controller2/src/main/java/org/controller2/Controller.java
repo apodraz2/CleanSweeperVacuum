@@ -2,7 +2,7 @@ package controller;
 
 
 
-import sensor.RoomSensor;
+import sensor2.src.main.java.org.sensor2.*;
 
 /**
  *
