@@ -4,6 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>CleanSweeperVacuum.Sensor</groupId>
 	<version>1.0-SNAPSHOT</version>
+	<artifactId>Sensor</artifactId>
+	<packaging>jar</packaging>
+	<name>Sensor Module</name>
+	
 	<parent>
 		<groupId>CleanSweeperVacuum</groupId>
 		<artifactId>CleanSweeperVacuum2</artifactId>
@@ -12,9 +16,7 @@
 	</parent>
 	
 	
-	<artifactId>Sensor</artifactId>
-	<packaging>pom</packaging>
-	<name>Sensor Module</name>
+	
 	
 	<build>
         <pluginManagement>
