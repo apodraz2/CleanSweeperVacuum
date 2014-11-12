@@ -1,4 +1,4 @@
-package sensor;
+package sensor.src.main.java.org.sensor2;
 
 public interface Sensor {
 

@@ -1,8 +1,6 @@
-package controller;
+package controller.src.main.java.org.controller2;
 
-
-
-import sensor2.target.classes.org.sensor2.RoomSensor.class*;
+import sensor.src.main.java.org.sensor2.*;
 
 /**
  *

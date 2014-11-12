@@ -1,4 +1,4 @@
-package org.controller2;
+package controller.src.test.java.org.controller2;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

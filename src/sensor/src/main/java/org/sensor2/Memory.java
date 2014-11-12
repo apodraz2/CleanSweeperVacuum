@@ -1,4 +1,4 @@
-package sensor;
+package sensor.src.main.java.org.sensor2;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import sensor.RoomSensor.Cell;
+import sensor.src.main.java.org.sensor2.RoomSensor.Cell;
 
 
 

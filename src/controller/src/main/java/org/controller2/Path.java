@@ -1,4 +1,4 @@
-package controller;
+package controller.src.main.java.org.controller2;
 
 import static java.lang.Math.abs;
 import java.util.ArrayList;

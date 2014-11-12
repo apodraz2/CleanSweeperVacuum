@@ -1,9 +1,10 @@
-package controller;
+package controller.src.main.java.org.controller2;
 
 import java.util.ArrayList;
 
-import sensor.Memory;
-import sensor.RoomSensor.Cell;
+import sensor.src.main.java.org.sensor2.Memory;
+import sensor.src.main.java.org.sensor2.RoomSensor.Cell;
+
 
 public class Diagnostics extends Memory{
 	public ArrayList<String> getSensorChecksLog(){

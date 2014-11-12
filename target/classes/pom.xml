@@ -16,8 +16,8 @@
   
   <modules>
   	
-  	<module>src/controller</module>
-  	<module>src/sensor</module>
+  	<module>controller</module>
+  	<module>sensor</module>
   </modules>
 
 	<build>
