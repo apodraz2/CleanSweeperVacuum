@@ -209,7 +209,9 @@ public class Vacuum extends Thread {
     }
 
     private boolean canTakeMoreDirt() throws InterruptedException{
-    	return !Controller.getInstance().getDirtCapacity().getIsFull();
+    	boolean res = Controller.getInstance().getDirtCapacity().getIsFull();
+    	
+    	return !res;
     }
     
     public void emptyMe() throws InterruptedException {
