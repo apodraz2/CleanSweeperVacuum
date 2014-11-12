@@ -10,7 +10,7 @@
 		<groupId>org.maven.CleanSweeperVacuum</groupId>
 		<artifactId>CleanSweeperVacuum-parent</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<!-- <relativePath>../CleanSweeperVacuum/pom.xml</relativePath> -->
+		<relativePath>../CleanSweeperVacuum/pom.xml</relativePath> 
 	</parent>
 	<version>1.0-SNAPSHOT</version>
 	<artifactId>/src/main/java/main/java/Sensor</artifactId>
