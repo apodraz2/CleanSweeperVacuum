@@ -8,7 +8,7 @@
   <packaging>jar</packaging>
   <parent>
   	<groupId>CleanSweeperVacuum</groupId>
-  	<artifactId>CleanSweeperVacuum</artifactId>
+  	<artifactId>CleanSweeperVacuum2</artifactId>
   	<version>1.0-SNAPSHOT</version>
   	<relativePath>../CleanSweeperVacuum/</relativePath>
   </parent>
