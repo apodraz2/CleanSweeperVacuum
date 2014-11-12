@@ -10,7 +10,7 @@
 		
 	</parent>
 
-	<artifactId>Controller</artifactId>
+	<artifactId>CleanSweeperVacuum2</artifactId>
 	<packaging>jar</packaging>
 	
 	<name>Controller Module</name>	

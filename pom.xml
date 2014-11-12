@@ -7,7 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>CleanSweeperVacuum2</name>
+  <name>CleanSweeperVacuum</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,8 +15,8 @@
   </properties>
   
   <modules>
-  	<module>/CleanSweeperVacuum/src/main/java/CleanSweeperVacuum/CleanSweeperVacuum2/Controller</module>
-  	<module>/CleanSweeperVacuum/src/main/java/Sensor/Sensor</module>
+  	<module>CleanSweeperVacuum2</module>
+  	<module>Sensor</module>
   </modules>
 
   <dependencies>
