@@ -12,6 +12,7 @@ public class Controller {
 	public volatile static Controller instance;
 	public Battery battery;
 	public Vacuum vacuum;
+	public DirtCapacity dirtCapacity;
     /**
      * Represents whether the vacuum is on or not
      */
@@ -30,10 +31,20 @@ public class Controller {
 		return this.battery;
 	}
     
+	 /**
+     * @author Sabrina Guillaume
+     * Gets DirtCapacity object in use
+     *
+     */
+	public DirtCapacity getDirtCapacity(){
+		return this.dirtCapacity;
+	}
+	
     public void initEverything() throws InterruptedException{
     	on = true;
 		initBattery();
 		initVacuum();
+		initDirtCapacity();
 	}
     
     private void initVacuum() throws InterruptedException {
@@ -47,4 +58,13 @@ public class Controller {
 		new Thread(battery).start();
 	}
 
+	 /**
+     * @author Sabrina Guillaume
+     * Initializes DirtCapacity object
+     *
+     */
+	private void initDirtCapacity() {
+		dirtCapacity = new DirtCapacity(0,50);
+		
+	}
 }

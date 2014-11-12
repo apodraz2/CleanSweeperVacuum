@@ -4,6 +4,11 @@ import main.java.Sensor.RoomSensor;
 
 
 
+
+
+
+
+
 import java.util.ArrayList;
 
 
@@ -66,7 +71,11 @@ public class Vacuum extends Thread {
             if (!canMakeOneStep(closestChargingStation) || !canStillClean(closestChargingStation)) {
                 goRecharge();
                 continue;
-            }
+            }else if(!canTakeMoreDirt()){
+           	 goRecharge();
+           	 emptyMe();
+                continue;
+           }
             if (sensor.canGoSouth() && floorGraph.findCell(currentCell.getX(), currentCell.getY() - 1) == null) {
                 floorGraph.add(currentCell.getX(), currentCell.getY() - 1);
                 stepInto(floorGraph.findCell(currentCell.getX(), currentCell.getY() - 1).getCell());
@@ -179,6 +188,10 @@ public class Vacuum extends Thread {
         while (!sensor.isClean() && sensor.getDirtRemaining() != 0) {
             Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
             sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+            
+            //Add Dirt Capacity to monitor dirt level
+            Controller.getInstance().getDirtCapacity().addDirt(1);
+            Controller.getInstance().getDirtCapacity().printDirtLevel();
             System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
         }
         floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();
@@ -199,7 +212,29 @@ public class Vacuum extends Thread {
         double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
         return remainingBattery - closestChargingStation.cost() >= 6;
     }
-
+    
+    /**
+     * @author Sabrina Guillaume
+     * Sees if vacuum can take more dirt
+     *
+     * @throws InterruptedException
+     */
+    private boolean canTakeMoreDirt() throws InterruptedException{
+    	boolean res = Controller.getInstance().getDirtCapacity().getIsFull();
+    	
+    	return !res;
+    }
+    
+    /**
+     * @author Sabrina Guillaume
+     * Prompts user to empty vacuum after vacuum has charged
+     *
+     * @throws InterruptedException
+     */
+    public void emptyMe() throws InterruptedException {
+    	Controller.getInstance().getDirtCapacity().emptyMe();
+    }
+    
     /**
      * Turns the vacuum on
      */
