@@ -59,4 +59,5 @@
         	<artifactId>Sensor</artifactId>
         </dependency>
        </dependencies>
+    <groupId>org.maven.CleanSweeperVacuum.Controller</groupId>
 </project>
