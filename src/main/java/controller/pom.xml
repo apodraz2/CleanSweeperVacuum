@@ -3,21 +3,25 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>CleanSweeperVacuum</groupId>
-  <artifactId>CleanSweeperVacuum</artifactId>
+  <artifactId>controller</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
+  
+  <parent>
+  	<groupId>CleanSweeperVacuum</groupId>
+  	<artifactId>CleanSweeperVacuum</artifactId>
+  	<version>1.0-SNAPSHOT</version>
+  	<relativePath>../pom.xml</relativePath>
+  </parent>
 
-  <name>CleanSweeperVacuum</name>
+  <name>Controller</name>
   <url>http://maven.apache.org</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   
-  <modules>
-  	<module>/src/main/java/controller</module>
-  	<module>/src/main/java/sensor</module>
-  </modules>
+  
 
 	<build>
         <pluginManagement>
