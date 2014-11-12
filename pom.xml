@@ -15,8 +15,8 @@
   </properties>
   
   <modules>
-  	<module>Controller</module>
-  	<module>Sensor</module>
+  	<module>/src/main/java/CleanSweeperVacuum/CleanSweeperVacuum2/</module>
+  	<module>/src/main/java/Sensor/</module>
   </modules>
 
   <dependencies>

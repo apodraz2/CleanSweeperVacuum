@@ -7,7 +7,7 @@
 		<relativePath>../CleanSweeperVacuum/pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<artifactId>Controller</artifactId>
+	<artifactId>/src/main/java/CleanSweeperVacuum/CleanSweeperVacuum2/</artifactId>
 	<packaging>jar</packaging>
 	
 	
