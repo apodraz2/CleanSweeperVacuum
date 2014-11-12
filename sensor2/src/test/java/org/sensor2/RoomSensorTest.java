@@ -121,10 +121,7 @@ public class RoomSensorTest {
 		Assert.assertEquals(rs.getCurrentCellY(), 0);
 	}
 	
-	@Test
-	public void testDirtDetection() {
-		Assert.assertFalse(rs.isClean());
-	}
+	
 	
 	public void main (String [] args) {
 		testNotNull();
