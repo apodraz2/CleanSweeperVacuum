@@ -1,13 +1,7 @@
 package org.sensor2;
+
+import org.junit.Assert;
 import org.junit.Test;
-
-import junit.framework.Assert;
-
-
-
-
-
-
 
 public class RoomSensorTest {
 	
