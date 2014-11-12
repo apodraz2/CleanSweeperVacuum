@@ -8,8 +8,8 @@
 	<name>Controller Module</name>
 	
 	<parent>
-		<groupId>CleanSweep</groupId>
-		<artifactId>CleanSweeperVacuum</artifactId>
+		<groupId>CleanSweeperVacuum</groupId>
+		<artifactId>CleanSweeperVacuum2</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<!-- <relativePath>../pom.xml</relativePath> -->
 	</parent>
