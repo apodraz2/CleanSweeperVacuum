@@ -30,6 +30,7 @@ public class Vacuum extends Thread {
 
     //Dependent Sensor
     private RoomSensor sensor;
+    private DirtCapacity dc;
 
     //boolean to turn vacuum on and off
     public boolean on = true;
@@ -42,8 +43,9 @@ public class Vacuum extends Thread {
      * @param sensor The Vacuum sensor
      * @throws InterruptedException
      */
-    public Vacuum(RoomSensor sensor) throws InterruptedException {
+    public Vacuum(RoomSensor sensor, DirtCapacity dc) throws InterruptedException {
         this.sensor = sensor;
+        this.dc = dc;
         currentCell = new FloorCell(sensor.getCurrentCellX(), sensor.getCurrentCellY());
         floorGraph.add(0, 0);
         sensor.setCurrentCell(0, 0);
@@ -183,6 +185,9 @@ public class Vacuum extends Thread {
         while (!sensor.isClean() && sensor.getDirtRemaining() != 0) {
             Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
             sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+            dc.addDirt(1);
+            if(dc.checkIsFull())
+            	dc.emptyMe();
             System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
         }
         floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();

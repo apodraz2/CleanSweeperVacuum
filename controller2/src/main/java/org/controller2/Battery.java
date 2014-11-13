@@ -135,7 +135,7 @@ public class Battery implements Runnable {
                 }else if (commandsList.get(0).equals("shutdown")){
                     commandsList.remove(0);
                     this.running = false;
-                    System.out.println("Vacuum has been tuned off");
+                    System.out.println("Vacuum has been turned off");
                 }
             }
         }

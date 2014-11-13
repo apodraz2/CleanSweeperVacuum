@@ -18,6 +18,9 @@ public class Controller {
 	public volatile static Controller instance;
 	public Battery battery;
 	public Vacuum vacuum;
+	
+	RoomSensor rs = new RoomSensor();
+	DirtCapacity dirtCapacity = new DirtCapacity(0,50);
     /**
      * Represents whether the vacuum is on or not
      */
@@ -35,22 +38,42 @@ public class Controller {
 	public Battery getBattery(){
 		return this.battery;
 	}
+	
+	 /**
+     * @author Sabrina Guillaume
+     * Gets DirtCapacity object in use
+     *
+     */
+	public DirtCapacity getDirtCapacity(){
+		return this.dirtCapacity;
+	}
     
     public void initEverything() throws InterruptedException{
     	on = true;
 		initBattery();
 		initVacuum();
+		initDirtCapacity();
 	}
     
     private void initVacuum() throws InterruptedException {
-		RoomSensor rs = new RoomSensor();
-		vacuum = new Vacuum(rs);
+		
+		vacuum = new Vacuum(rs, dirtCapacity);
 		new Thread(vacuum).start();
 	}
     
 	private void initBattery() {
 		battery = new Battery();
 		new Thread(battery).start();
+	}
+	
+	 /**
+     * @author Sabrina Guillaume
+     * Initializes DirtCapacity object
+     *
+     */
+	private void initDirtCapacity() {
+		
+		
 	}
 
 }
