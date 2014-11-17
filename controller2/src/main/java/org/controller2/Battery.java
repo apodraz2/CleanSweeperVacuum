@@ -11,8 +11,7 @@ public class Battery implements Runnable {
 
     private volatile boolean running = true;
     private double batteryLife = 50;
-    private boolean charging = false;
-    private Integer previosFloorType;
+    private Integer previousFloorType;
     private ArrayList<String> commandsList = new ArrayList<String>();
 
     public boolean isRequestsEmpty() {
@@ -31,49 +30,42 @@ public class Battery implements Runnable {
      * @param currentFloorType type of the floor robot is on right now
      */
     public void decreaseBatteryMovement(int currentFloorType) {
+        float currentFloorCost=3;
+        float previousFloorCost=3;
         switch (currentFloorType) {
             //Bare floor
             case 1:
-                if (previosFloorType == 1) {
-                    batteryLife = batteryLife - 1;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 2) {
-                    batteryLife = batteryLife - 1.5;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 4) {
-                    batteryLife = batteryLife - 2.5;
-                    previosFloorType = currentFloorType;
-                }
+                currentFloorCost=1;
                 break;
             //Low-pile carpet
             case 2:
-                if (previosFloorType == 1) {
-                    batteryLife = batteryLife - 1.5;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 2) {
-                    batteryLife = batteryLife - 1;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 4) {
-                    batteryLife = batteryLife - 2;
-                    previosFloorType = currentFloorType;
-                }
+                currentFloorCost=2;
                 break;
             //High-pile carpet
             case 4:
-                if (previosFloorType == 1) {
-                    batteryLife = batteryLife - 2.5;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 2) {
-                    batteryLife = batteryLife - 2;
-                    previosFloorType = currentFloorType;
-                } else if (previosFloorType == 4) {
-                    batteryLife = batteryLife - 1;
-                    previosFloorType = currentFloorType;
-                }
+                currentFloorCost=3;
                 break;
             default:
                 break;
         }
+        switch (previousFloorType) {
+            //Bare floor
+            case 1:
+                previousFloorCost=1;
+                break;
+            //Low-pile carpet
+            case 2:
+                previousFloorCost=2;
+                break;
+            //High-pile carpet
+            case 4:
+                previousFloorCost=3;
+                break;
+            default:
+                break;
+        }
+        previousFloorType=currentFloorType;
+        batteryLife-=((currentFloorCost+previousFloorCost)/2);
         if (batteryLife < 0) {
             throw new RuntimeException("Battery has reached 0%");
         }
@@ -85,32 +77,38 @@ public class Battery implements Runnable {
      * @param surface type of the floor robot is on right now
      */
     public void decreaseBatteryCleaning(int surface) {
+        float surfaceCost=0;
         switch (surface) {
             //Bare floor
             case 1:
-                batteryLife = batteryLife - 1;
+                surfaceCost =  1;
                 break;
             //Low-pile carpet
             case 2:
-                batteryLife = batteryLife - 2;
+                surfaceCost =  2;
                 break;
             //High-pile carpet
             case 4:
-                batteryLife = batteryLife - 3;
+                surfaceCost =  3;
                 break;
         }
+        batteryLife-=surfaceCost;
     }
 
     private void chargeBattery() throws InterruptedException {
         System.out.println("Starting Charge");
         while (batteryLife < 50) {
-            Thread.sleep(50);
             System.out.println("Battery life is at " + batteryLife * 2 + "%");
-            batteryLife++;
+            if (Controller.getInstance().hasUserIO()) {
+                batteryLife+=5;
+                Thread.sleep(50);
+            }else{
+                batteryLife=50;
+                break;
+            }
             if (batteryLife > 49) {
-                batteryLife = 50;
-                System.out.println("Battery life is at " + batteryLife * 2 + "%");
-                System.out.println("Finished charging!");
+                    batteryLife = 50;
+                    System.out.println("Finished charging!");
             }
         }
     }
@@ -132,7 +130,7 @@ public class Battery implements Runnable {
                     System.out.println("Executing request charge");
                     chargeBattery();
                     commandsList.remove(0);
-                }else if (commandsList.get(0).equals("shutdown")){
+                } else if (commandsList.get(0).equals("shutdown")) {
                     commandsList.remove(0);
                     this.running = false;
                     System.out.println("Vacuum has been turned off");
@@ -159,29 +157,31 @@ public class Battery implements Runnable {
      * calls method move()
      */
     public void run() {
-        long t = 15;
-        while (this.running) {
-            Thread.yield();
-            try {
-                synchronized (commandsList) {
-                    commandsList.wait(t);
+        synchronized (this) {
+            long t = 15;
+            while (this.running) {
+                Thread.yield();
+                try {
+                    synchronized (commandsList) {
+                        commandsList.wait(t);
+                    }
+                } catch (InterruptedException ex) {
                 }
-            } catch (InterruptedException ex) {
-            }
 
-            try {
-                executeCommand();
-            } catch (InterruptedException e) {
-            }
+                try {
+                    executeCommand();
+                } catch (InterruptedException e) {
+                }
 
+            }
         }
     }
 
     public void setStartingFloorType(int floorType) {
-        this.previosFloorType = floorType;
+        this.previousFloorType = floorType;
     }
 
     public Integer getStartingFloorType() {
-        return previosFloorType;
+        return previousFloorType;
     }
 }

@@ -22,14 +22,18 @@ public class RoomSensor implements Sensor {
 	/**
 	 * RoomSensor constructor initializes memory and floor plan and sets the current cell.
 	 */
-	public RoomSensor() {
+	public RoomSensor(String floorPlan) {
 		
 		memory = new Memory();
-		memory.setFloorPlan();
+		memory.setFloorPlan(floorPlan);
 		cells = memory.floorMemory;
 		
 		currentCell = cells.get(0);
 		
+	}
+        
+        public RoomSensor() {
+            this("floorplan.xml");
 	}
         
         public void setCurrentCell(int x, int y){
@@ -65,7 +69,7 @@ public class RoomSensor implements Sensor {
 	@Override
 	public boolean isClean() {
 		// TODO Auto-generated method stub
-		return currentCell.getIsClean();
+		return currentCell.getDs()==0;
 	}
 	
 	/**
@@ -79,7 +83,7 @@ public class RoomSensor implements Sensor {
 	 * set amount of dirt remaining at location (need to update to clean or partially clean after every "cleaning")
 	 */
 	public void setDirtRemaining(int dirt) {
-		System.out.println("Setting dirt remaining to: " + dirt);
+//		System.out.println("Setting dirt remaining to: " + dirt);
 		currentCell.setDs(dirt);
 	}
 	

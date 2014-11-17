@@ -131,6 +131,10 @@ public class Path {
     public FloorCell getLastCell(){
         return path.get(path.size()-1);
     }
+    
+    public FloorCell getFirstCell(){
+        return path.get(0);
+    }
 
     /**
      * Clones a path
@@ -142,4 +146,10 @@ public class Path {
         return new Path((ArrayList<FloorCell>) this.path.clone());
     }
 
+    public String toString(){
+        String result = "";
+        for(FloorCell cell : this.path)
+            result+=cell.toString();
+        return result;
+    }
 }

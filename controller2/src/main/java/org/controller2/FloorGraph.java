@@ -200,15 +200,14 @@ public class FloorGraph {
         Path shortestPath = null;
         for (Path path : shortestPaths) {
             if (path.getLastCell().isChargingStation()) {
-                if (shortestPath != null) {
-                    if (path.cost() < shortestPath.cost()) {
-                        shortestPath = path;
-                    }
-                } else {
-                    shortestPath = path;
-                }
+                return path;
             }
         }
         return shortestPath;
     }
+    
+    public ArrayList<GraphCell> getGraph() {
+        return graph;
+    }
+    
 }

@@ -45,8 +45,8 @@ public class Memory {
 	 *				DS = represents units of dirt in the cell
 	 *				CS = charging station		
 	 */
-	public void setFloorPlan(){
-		File fXmlFile = new File("floorplan.xml");
+	public void setFloorPlan(String floorPlan){
+		File fXmlFile = new File(floorPlan);
     	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
     	DocumentBuilder dBuilder;
     	Document doc = null;

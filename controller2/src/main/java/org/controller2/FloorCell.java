@@ -122,7 +122,7 @@ public class FloorCell {
      */
     @Override
     public String toString() {
-        return "(" + getX() + "," + getY() + ")";
+        return "(" + getX() + "," + getY() +")";
     }
     
     public boolean isChargingStation(){

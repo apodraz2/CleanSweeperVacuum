@@ -1,16 +1,8 @@
 package org.controller2;
 
-
-
-
-
 import java.util.ArrayList;
 
 import org.sensor2.RoomSensor;
-
-
-
-
 
 /**
  * Class responsible for vacuum movement. Dependent on a Sensor implementation.
@@ -37,6 +29,10 @@ public class Vacuum extends Thread {
 
     public boolean startingPointSet = false;
 
+    private Path closestChargingStation;
+
+    private Battery battery;
+
     /**
      * Starts up the vacuum
      *
@@ -62,14 +58,18 @@ public class Vacuum extends Thread {
         System.out.println("Setting starting floor type for cell (" + sensor.getCurrentCellX() + ", " + sensor.getCurrentCellY() + ")");
         Controller.getInstance().getBattery().setStartingFloorType(sensor.getFloorType());
         startingPointSet = true;
-        ArrayList<FloorCell> toVisit = new ArrayList<>();
+        ArrayList<FloorCell> toVisit;
+        Path shortestPath = null;
+        battery = Controller.getInstance().battery;
         do {
             toVisit = floorGraph.hasToBeVisited();
-            //The sensor tries to go to a adjacent cell if it has not been visited
+            closestChargingStation = floorGraph.getClosestChargingStation(currentCell);
 
-            Path closestChargingStation = floorGraph.getClosestChargingStation(currentCell);
+            if (toVisit.isEmpty()) {
+                continue;
+            }
 
-            if (!canMakeOneStep(closestChargingStation) || !canStillClean(closestChargingStation)) {
+            if (!canMakeOneStep()) {
                 goRecharge();
                 continue;
             }
@@ -89,7 +89,6 @@ public class Vacuum extends Thread {
             //with unvisited adjancent cells
             else {
                 ArrayList<Path> shortestPaths = floorGraph.shortestPaths(currentCell.getX(), currentCell.getY());
-                Path shortestPath = null;
                 for (Path path : shortestPaths) {
                     if (path.startsWith(currentCell.getX(), currentCell.getY())) {
                         for (FloorCell cell : toVisit) {
@@ -105,6 +104,11 @@ public class Vacuum extends Thread {
                         }
                     }
                 }
+
+                if (shortestPath != null && !canGoTo(shortestPath) && currentCell.isChargingStation()) {
+                    break;
+                }
+
                 if (shortestPath != null && canGoTo(shortestPath)) {
                     moveThroughPath(shortestPath);
                 } else {
@@ -125,7 +129,12 @@ public class Vacuum extends Thread {
      * @throws InterruptedException
      */
     public void goRecharge() throws InterruptedException {
-        moveThroughPath(floorGraph.getClosestChargingStation(currentCell));
+        System.out.println("Going Recharge");
+        Path path = floorGraph.getClosestChargingStation(currentCell);
+        while (path.size() != 0) {
+            FloorCell nextCell = path.dequeue();
+            stepInto(nextCell);
+        }
         Controller.getInstance().getBattery().addCommand("charge");
         Controller.getInstance().getBattery().executeCommand();
     }
@@ -137,7 +146,7 @@ public class Vacuum extends Thread {
      * @throws InterruptedException
      */
     public void moveThroughPath(Path path) throws InterruptedException {
-        while (path != null && path.size() != 0) {
+        while (path != null && path.size() != 0 && canMakeOneStep()) {
             FloorCell nextCell = path.dequeue();
             stepInto(nextCell);
         }
@@ -154,8 +163,13 @@ public class Vacuum extends Thread {
             cell.setChargingStation(true);
         }
         if (!currentCell.equals(cell)) {
+            System.out.println("Moving from "+currentCell+" to "+cell+" | Battery "+Controller.getInstance().getBattery().getBatteryLife()+" units | Cost "+((currentCell.cost()+cell.cost())/2));
             currentCell = cell;
+            closestChargingStation = floorGraph.getClosestChargingStation(currentCell);
             sensor.setCurrentCell(currentCell.getX(), currentCell.getY());
+            currentCell.floorType = sensor.getFloorType();
+            Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
+
         }
         if (!sensor.canGoEast()) {
             floorGraph.findCell(cell.getX(), cell.getY()).setEast(null);
@@ -169,63 +183,80 @@ public class Vacuum extends Thread {
         if (!sensor.canGoSouth()) {
             floorGraph.findCell(cell.getX(), cell.getY()).setSouth(null);
         }
-
-        System.out.println("Visiting now : " + currentCell);
-        System.out.println("Dirt Remaining before cleaning: " + sensor.getDirtRemaining());
         if (sensor.getDirtRemaining() != 0 && startingPointSet == true) {
-            Controller.getInstance().getBattery().decreaseBatteryMovement(sensor.getFloorType());
             performCleaningFunction();
-            System.out.println(Controller.getInstance().getBattery().getBatteryLife());
         }
-
-//        
     }
 
     private void performCleaningFunction() throws InterruptedException {
-        while (!sensor.isClean() && sensor.getDirtRemaining() != 0) {
-            Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
-            sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
-            dc.addDirt(1);
-            if(dc.checkIsFull())
-            	dc.emptyMe();
-            System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
+            while (!sensor.isClean() && canStillClean()) {
+                Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
+                System.out.println("Cleaning "+currentCell+" | Battery "+Controller.getInstance().getBattery().getBatteryLife()+" units | Cost "+currentCell.cost()+" | Dirt Capacity "+(50-dc.getDirtLevel()));
+                sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
+                dc.addDirt(1);
+                if (dc.checkIsFull()) {
+                    dc.emptyMe();
+                }
+                //System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
+            }
+        if (sensor.getDirtRemaining() == 0) {
+            floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();
         }
-        floorGraph.findCell(currentCell.getX(), currentCell.getY()).clean();
     }
 
-    private boolean canStillClean(Path closestChargingStation) {
+    public boolean canStillClean() {
         double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
-        return remainingBattery - closestChargingStation.cost() >= 1;
+        return remainingBattery - closestChargingStation.cost() > currentCell.cost();
     }
 
-    private boolean canGoTo(Path shortestPath) {
+    public boolean canGoTo(Path shortestPath) {
         double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
         FloorCell destination = shortestPath.getLastCell();
-        return remainingBattery - floorGraph.getClosestChargingStationTo(destination.getX(), destination.getY()).cost() - shortestPath.cost() >= 1;
+        return remainingBattery - floorGraph.getClosestChargingStationTo(destination.getX(), destination.getY()).cost() - shortestPath.cost() > (currentCell.cost() + 3);
     }
 
-    private boolean canMakeOneStep(Path closestChargingStation) {
+    public boolean canMakeOneStep() {
         double remainingBattery = Controller.getInstance().getBattery().getBatteryLife();
-        return remainingBattery - closestChargingStation.cost() >= 6;
+        return remainingBattery - closestChargingStation.cost() > (currentCell.cost() + 3);
     }
+
+    public String currentPosition() {
+        return currentCell.toString();
+    }
+
+    public ArrayList<FloorCell> hasToBeVisited() {
+        return this.floorGraph.hasToBeVisited();
+    }
+    
+    public FloorGraph getFloorGraph() {
+        return this.floorGraph;
+    }
+
 
     /**
      * Turns the vacuum on
      */
     public void run() {
         // TODO Auto-generated method stub
-        System.out.println("Vacuum is running.");
+        synchronized (this) {
+            System.out.println("Vacuum is running.");
 //		System.out.println("Current cell position is " + currentCell.getX() + ", " + currentCell.getY());
-        while (on) {
-            try {
-                this.move();
-            } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            while (on) {
+                try {
+                    this.move();
+                } catch (InterruptedException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                System.out.println("All the following cells have been visited:");
+                System.out.println(floorGraph);
+                if (floorGraph.hasToBeVisited().size() > 0) {
+                    System.out.println("The vacuum has finished cleaning but some locations couldn't be reached!");
+                } else {
+                    System.out.println("The vacuum has finished cleaning and all the floor has been cleaned!");
+                }
             }
-            System.out.println("All the following cells have been visited:");
-            System.out.println(floorGraph);
-            System.out.println(Controller.getInstance().getBattery().getStartingFloorType());
+            notifyAll();
         }
     }
 
