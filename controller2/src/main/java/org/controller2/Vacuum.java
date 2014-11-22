@@ -1,6 +1,7 @@
 package org.controller2;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import org.sensor2.RoomSensor;
 
@@ -23,6 +24,7 @@ public class Vacuum extends Thread {
     //Dependent Sensor
     private RoomSensor sensor;
     private DirtCapacity dc;
+    private Scanner input = new Scanner(System.in);
 
     //boolean to turn vacuum on and off
     public boolean on = true;
@@ -195,7 +197,7 @@ public class Vacuum extends Thread {
                 sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
                 dc.addDirt(1);
                 if (dc.checkIsFull()) {
-                    dc.emptyMe();
+                    dc.emptyMe(input);
                 }
                 //System.out.println("Dirt Remaining after cleaning: " + sensor.getDirtRemaining());
             }

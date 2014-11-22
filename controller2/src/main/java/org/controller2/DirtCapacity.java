@@ -61,10 +61,10 @@ public class DirtCapacity {
         checkIsFull();
     }
 
-    public void emptyMe() throws InterruptedException {
+    public void emptyMe(Scanner input) throws InterruptedException {
         synchronized (Controller.getInstance().vacuum) {
             if(Controller.getInstance().hasUserIO()){
-                Scanner yesEmptyMe = new Scanner(System.in);
+                Scanner yesEmptyMe = input;
                 String userResponse;
 
                 System.out.println("Do you want to empty the Vacuum (Enter y for yes)?  ");
