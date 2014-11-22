@@ -66,7 +66,7 @@ public class Controller {
         new Thread(vacuum).start();
     }
 
-    private void initBattery() {
+    void initBattery() {
         new Thread(battery).start();
     }
 
