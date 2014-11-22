@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<home>
+	<floor level ='1'>
+		<!-- Guest Bedroom A -->
+		<cell xs ='0' ys ='0' ss ='4' ps ='1222' ds ='1' cs ='1'/>
+		<cell xs ='1' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='2' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='3' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='4' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='5' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='6' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='7' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='8' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='9' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='10' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='11' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='12' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='13' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='14' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='15' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='16' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='17' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='18' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='19' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='20' ys ='0' ss ='4' ps ='1122' ds ='1' cs ='0'/>
+		<cell xs ='21' ys ='0' ss ='4' ps ='2122' ds ='1' cs ='0'/>
+	</floor>
+</home>
