@@ -22,8 +22,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 26.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 26.0);
+		String failureDetail = "Expected: 49. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 49.0);
 	}
 	
 	@Test
@@ -33,8 +33,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 36.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 36.0);
+		String failureDetail = "Expected: 47.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 47.5);
 	}
 	
 	@Test
@@ -44,8 +44,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 34.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 34.0);
+		String failureDetail = "Expected: 45.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 45.5);
 	}
 	
 	@Test
@@ -55,8 +55,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 32.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 32.5);
+		String failureDetail = "Expected: 44.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 44.0);
 	}
 	
 	@Test
@@ -66,8 +66,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 30.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 30.5);
+		String failureDetail = "Expected: 42.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 42.0);
 	}
 	
 	@Test
@@ -77,8 +77,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 28.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 28.0);
+		String failureDetail = "Expected: 39.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 39.5);
 	}
 	
 	
@@ -89,8 +89,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 48.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 48.0);
+		String failureDetail = "Expected: 37.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 37.5);
 	}
 	
 	@Test
@@ -100,8 +100,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 45.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 45.5);
+		String failureDetail = "Expected: 35.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 35.0);
 	}
 	
 	
@@ -112,8 +112,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 42.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 42.5);
+		String failureDetail = "Expected: 32.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 32.0);
 	}
 	
 	@Test
@@ -122,8 +122,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(1);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 27.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 27.0);
+		String failureDetail = "Expected: 31.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 31.0);
 	}
 	
 	@Test
@@ -132,8 +132,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(2);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 40.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 40.5);
+		String failureDetail = "Expected: 29.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 29.0);
 	}
 	
 	@Test
@@ -142,8 +142,8 @@ public class BatteryTest {
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(4);
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 37.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 37.5);
+		String failureDetail = "Expected: 26.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 26.0);
 	}
 
 }
