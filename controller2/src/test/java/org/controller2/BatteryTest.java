@@ -1,11 +1,7 @@
-package org.controller2;
+package controller2;
 
+import org.junit.Assert;
 import org.junit.Test;
-
-import junit.framework.Assert;
-
-
-
 public class BatteryTest {
 
 	@Test
@@ -13,137 +9,106 @@ public class BatteryTest {
 		Controller.getInstance().initBattery();
 		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		Assert.assertTrue(batteryLife == 50.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementBareFloorToBareFloor() {
-		Controller.getInstance().initBattery();
+		
 		Controller.getInstance().getBattery().setStartingFloorType(1);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 49. Actual: " + batteryLife;
+		//ER1-1
+		String failureDetail = "ER1-1: Expected: 49. Actual: " + batteryLife;
 		Assert.assertTrue(failureDetail, batteryLife == 49.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementBareFloorToLowPileCarpet() {
-		Controller.getInstance().initBattery();
+		
 		Controller.getInstance().getBattery().setStartingFloorType(1);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 47.5. Actual: " + batteryLife;
+		//ER1-2
+		failureDetail = "ER1-2: Expected: 47.5. Actual: " + batteryLife;
 		Assert.assertTrue(failureDetail, batteryLife == 47.5);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementBareFloorToHighPileCarpet() {
-		Controller.getInstance().initBattery();
+		
 		Controller.getInstance().getBattery().setStartingFloorType(1);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 45.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 45.5);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementLowPileCarpetToBareFloor() {
-		Controller.getInstance().initBattery();
+		// ER1-3
+		failureDetail = "ER1-3: Expected: 45.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 45.0);
+		
 		Controller.getInstance().getBattery().setStartingFloorType(2);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 44.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 44.0);
-	}
+		// ER1-4
+		failureDetail = "ER1-4: Expected: 43.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 43.5);
 	
-	@Test
-	public void testBatteryLifeDecreaseMovementLowPileCarpetToLowPileCarpet() {
-		Controller.getInstance().initBattery();
 		Controller.getInstance().getBattery().setStartingFloorType(2);
-		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 42.0. Actual: " + batteryLife;
+		// ER1-5
+		failureDetail = "ER1-5: Expected: 42.0. Actual: " + batteryLife;
 		Assert.assertTrue(failureDetail, batteryLife == 42.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementLowPileCarpetToHighPileCarpet() {
-		Controller.getInstance().initBattery();
+		
+		Controller.getInstance().getBattery().setStartingFloorType(2);
+		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		
+		// ER1-6
+		failureDetail = "ER1-6: Expected: 41.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 41.0);
+		
 		Controller.getInstance().getBattery().setStartingFloorType(2);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 39.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 39.5);
-	}
-	
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementHighPileCarpetToBareFloor() {
-		Controller.getInstance().initBattery();
+		// ER1-7
+		failureDetail = "ER1-7: Expected: 39.0. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 39.0);
+		
 		Controller.getInstance().getBattery().setStartingFloorType(4);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(1);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 37.5. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 37.5);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementHightPileCarpetToLowhPileCarpet() {
-		Controller.getInstance().initBattery();
+		//ER1-8
+		failureDetail = "ER1-8: Expected: 36.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 36.5);
+		
 		Controller.getInstance().getBattery().setStartingFloorType(4);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(2);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 35.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 35.0);
-	}
-	
-	
-	@Test
-	public void testBatteryLifeDecreaseMovementHighPileCarpetToHighPileCarpet() {
-		Controller.getInstance().initBattery();
+		//ER1-9
+		failureDetail = "ER1-9: Expected: 34.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 34.5);
+		
 		Controller.getInstance().getBattery().setStartingFloorType(4);
 		Controller.getInstance().getBattery().decreaseBatteryMovement(4);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 32.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 32.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseCleaningBareFloor() {
-		Controller.getInstance().initBattery();
+		//ER1-10
+		failureDetail = "ER1-10: Expected: 33.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 33.5);
+		
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(1);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 31.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 31.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseCleaningLowPileCarpet() {
-		Controller.getInstance().initBattery();
+		//ER1-11
+		failureDetail = "ER1-11: Expected: 32.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 32.5);
+		
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(2);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 29.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 29.0);
-	}
-	
-	@Test
-	public void testBatteryLifeDecreaseMHighPileCarpet() {
-		Controller.getInstance().initBattery();
+		//ER1-12
+		failureDetail = "ER1-12: Expected: 30.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 30.5);
+		
 		Controller.getInstance().getBattery().decreaseBatteryCleaning(4);
-		double batteryLife = Controller.getInstance().getBattery().getBatteryLife();
+		batteryLife = Controller.getInstance().getBattery().getBatteryLife();
 		
-		String failureDetail = "Expected: 26.0. Actual: " + batteryLife;
-		Assert.assertTrue(failureDetail, batteryLife == 26.0);
+		//ER1-13
+		failureDetail = "ER1-13: Expected: 27.5. Actual: " + batteryLife;
+		Assert.assertTrue(failureDetail, batteryLife == 27.5);
 	}
-
 }
