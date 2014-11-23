@@ -43,63 +43,65 @@ public class NavigationTest {
             Assert.assertTrue(!Controller.getInstance().getVacuum().hasToBeVisited().isEmpty());
             for (GraphCell cell : Controller.getInstance().getVacuum().getFloorGraph().getGraph()) {
                 Assert.assertTrue(isReachable(cell));
-                if(cell.mustBeVisited()){
+                if (cell.mustBeVisited()) {
                     Assert.assertTrue(hasUnreachableNeighbors(cell));
                 }
             }
         }
 
     }
-    
+
     @Test
-    public void shortestPathsWork() throws InterruptedException{
+    public void shortestPathsWork() throws InterruptedException {
         Controller.reset("traversablefloorplan.xml", false);
         Controller.getInstance().initEverything();
         synchronized (Controller.getInstance().getVacuum()) {
             Controller.getInstance().getVacuum().wait();
-            ArrayList<Path> paths = Controller.getInstance().getVacuum().getFloorGraph().shortestPaths(0, 0);
-            paths.sort(new PathComparator());
-            ArrayList<Path> auxPaths = new ArrayList<>();
-            for(Path path : paths){
-                boolean isValid;
-                isValid = auxPaths.isEmpty();
-                for(Path auxPath : auxPaths){
-                    Path pathClone = path.clone();
-                    Path auxPathClone = auxPath.clone();
-                    do{
-                        FloorCell cell = pathClone.dequeue();
-                        FloorCell auxCell = auxPathClone.dequeue();
-                        if(!cell.equals(auxCell)){
-                            break;
-                        }
-                        if(auxPathClone.size()==0 && pathClone.size()==1){
-                            isValid = true;
-                            break;
-                        }
-                    }while(auxPathClone.size()!=0);
+            for (GraphCell source : Controller.getInstance().getVacuum().getFloorGraph().getGraph()) {
+                ArrayList<Path> paths = Controller.getInstance().getVacuum().getFloorGraph().shortestPaths(source.getX(), source.getY());
+                Assert.assertEquals(paths.size(), Controller.getInstance().getVacuum().getFloorGraph().getGraph().size());
+                paths.sort(new PathComparator());
+                ArrayList<Path> auxPaths = new ArrayList<>();
+                for (Path path : paths) {
+                    boolean isValid;
+                    isValid = auxPaths.isEmpty();
+                    for (Path auxPath : auxPaths) {
+                        Path pathClone = path.clone();
+                        Path auxPathClone = auxPath.clone();
+                        do {
+                            FloorCell cell = pathClone.dequeue();
+                            FloorCell auxCell = auxPathClone.dequeue();
+                            if (!cell.equals(auxCell)) {
+                                break;
+                            }
+                            if (auxPathClone.size() == 0 && pathClone.size() == 1) {
+                                isValid = true;
+                                break;
+                            }
+                        } while (auxPathClone.size() != 0);
+                    }
+                    Assert.assertTrue(isValid);
+                    auxPaths.add(path);
+                    System.out.println(path);
                 }
-                Assert.assertTrue(isValid);
-                auxPaths.add(path);
-                System.out.println(path);
             }
         }
     }
 
-    
     static class PathComparator implements Comparator<Path> {
 
-        
         public int compare(Path p1, Path p2) {
             Integer a1 = p1.size();
             Integer a2 = p2.size();
             return a1.compareTo(a2);
         }
     }
-    
+
     public boolean isReachable(GraphCell cell) {
-        return 50 - 2*Controller.getInstance().getVacuum().getFloorGraph().getClosestChargingStationTo(cell.getX(), cell.getY()).cost()> 0;
+        return 50 - 2 * Controller.getInstance().getVacuum().getFloorGraph().getClosestChargingStationTo(cell.getX(), cell.getY()).cost() > 0;
     }
+
     public boolean hasUnreachableNeighbors(GraphCell cell) {
-        return 50 - 2*Controller.getInstance().getVacuum().getFloorGraph().getClosestChargingStationTo(cell.getX(), cell.getY()).cost() - (cell.getCell().cost()+3) < 0;
+        return 50 - 2 * Controller.getInstance().getVacuum().getFloorGraph().getClosestChargingStationTo(cell.getX(), cell.getY()).cost() - (cell.getCell().cost() + 3) < 0;
     }
 }
