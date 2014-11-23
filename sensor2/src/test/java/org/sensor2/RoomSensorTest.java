@@ -121,14 +121,30 @@ public class RoomSensorTest {
 		Assert.assertEquals(rs.getCurrentCellY(), 0);
 	}
 	
-	
-	
-	public void main (String [] args) {
-		testNotNull();
-		testStartingPosition();
-		testGoNorth();
-		testGoEast();
+	@Test
+	public void testIsClean() {
+		rs = new RoomSensor();
+		rs.goNorth();
+		
+		Assert.assertFalse(rs.isClean());
 	}
+	
+	@Test
+	public void testGetDirtRemaining() {
+		rs = new RoomSensor();
+		rs.goEast();
+		
+		Assert.assertEquals(rs.getDirtRemaining(), 1);
+	}
+	
+	@Test
+	public void testGetFloorType() {
+		rs = new RoomSensor();
+		rs.goEast();
+		
+		Assert.assertEquals(2, rs.getFloorType());
+	}
+	
 	
 
 }
