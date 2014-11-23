@@ -60,7 +60,7 @@ public class NavigationTest {
             for (GraphCell source : Controller.getInstance().getVacuum().getFloorGraph().getGraph()) {
                 ArrayList<Path> paths = Controller.getInstance().getVacuum().getFloorGraph().shortestPaths(source.getX(), source.getY());
                 Assert.assertEquals(paths.size(), Controller.getInstance().getVacuum().getFloorGraph().getGraph().size());
-                paths.sort(new PathComparator());
+                sort(paths);
                 ArrayList<Path> auxPaths = new ArrayList<>();
                 for (Path path : paths) {
                     boolean isValid;
@@ -88,13 +88,22 @@ public class NavigationTest {
         }
     }
 
-    static class PathComparator implements Comparator<Path> {
-
-        public int compare(Path p1, Path p2) {
-            Integer a1 = p1.size();
-            Integer a2 = p2.size();
-            return a1.compareTo(a2);
+    static ArrayList<Path> sort(ArrayList<Path> paths){
+        ArrayList<Path> newPaths = new ArrayList<Path>();
+        ArrayList<Path> pathsClone = new ArrayList<>();
+        for(Path path : paths){
+            pathsClone.add(path);
         }
+        while(!pathsClone.isEmpty()){
+            Path minimum = pathsClone.get(0);
+            for(Path path : pathsClone){
+                if(path.size()<minimum.size())
+                    minimum=path;
+            }
+            newPaths.add(minimum);
+            pathsClone.remove(minimum);
+        }        
+        return newPaths;
     }
 
     public boolean isReachable(GraphCell cell) {
