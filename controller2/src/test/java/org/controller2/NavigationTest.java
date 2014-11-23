@@ -5,6 +5,8 @@
  */
 package org.controller2;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import junit.framework.Assert;
 import org.junit.Test;
 
@@ -47,6 +49,51 @@ public class NavigationTest {
             }
         }
 
+    }
+    
+    @Test
+    public void shortestPathsWork() throws InterruptedException{
+        Controller.reset("traversablefloorplan.xml", false);
+        Controller.getInstance().initEverything();
+        synchronized (Controller.getInstance().getVacuum()) {
+            Controller.getInstance().getVacuum().wait();
+            ArrayList<Path> paths = Controller.getInstance().getVacuum().getFloorGraph().shortestPaths(0, 0);
+            paths.sort(new PathComparator());
+            ArrayList<Path> auxPaths = new ArrayList<>();
+            for(Path path : paths){
+                boolean isValid;
+                isValid = auxPaths.isEmpty();
+                for(Path auxPath : auxPaths){
+                    Path pathClone = path.clone();
+                    Path auxPathClone = auxPath.clone();
+                    do{
+                        FloorCell cell = pathClone.dequeue();
+                        FloorCell auxCell = auxPathClone.dequeue();
+                        if(!cell.equals(auxCell)){
+                            break;
+                        }
+                        if(auxPathClone.size()==0 && pathClone.size()==1){
+                            isValid = true;
+                            break;
+                        }
+                    }while(auxPathClone.size()!=0);
+                }
+                Assert.assertTrue(isValid);
+                auxPaths.add(path);
+                System.out.println(path);
+            }
+        }
+    }
+
+    
+    static class PathComparator implements Comparator<Path> {
+
+        
+        public int compare(Path p1, Path p2) {
+            Integer a1 = p1.size();
+            Integer a2 = p2.size();
+            return a1.compareTo(a2);
+        }
     }
     
     public boolean isReachable(GraphCell cell) {
