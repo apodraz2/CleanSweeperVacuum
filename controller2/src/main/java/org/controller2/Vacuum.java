@@ -131,6 +131,7 @@ public class Vacuum extends Thread {
      * @throws InterruptedException
      */
     public void goRecharge() throws InterruptedException {
+    	Diagnostics.getInstance().recordMovement("Vacuum comming back to charging station");
         System.out.println("Going Recharge");
         Path path = floorGraph.getClosestChargingStation(currentCell);
         while (path.size() != 0) {
@@ -194,6 +195,17 @@ public class Vacuum extends Thread {
             while (!sensor.isClean() && canStillClean()) {
                 Controller.getInstance().getBattery().decreaseBatteryCleaning(sensor.getFloorType());
                 System.out.println("Cleaning "+currentCell+" | Battery "+Controller.getInstance().getBattery().getBatteryLife()+" units | Cost "+currentCell.cost()+" | Dirt Capacity "+(50-dc.getDirtLevel()));
+                
+                Diagnostics.getInstance().recordMovement("Vacuum visited cell: " + currentCell.toString() + " Floor type: " + sensor.getFloorType() +
+                		"Battery life: " + Controller.getInstance().getBattery().getBatteryLife() * 2 + "%");
+                
+                Diagnostics.getInstance().recordBatery("Battery life at cell " + currentCell.toString() +
+                		" is: " + Controller.getInstance().getBattery().getBatteryLife() * 2 + "%");
+                
+                Diagnostics.getInstance().recordCleaning("Performing cleaning at cell: " + currentCell.toString() +
+                		" Dirt amount detected: " + sensor.getDirtRemaining());
+             
+                
                 sensor.setDirtRemaining(sensor.getDirtRemaining() - 1);
                 dc.addDirt(1);
                 if (dc.checkIsFull()) {
@@ -259,6 +271,7 @@ public class Vacuum extends Thread {
                 }
             }
             notifyAll();
+            //Diagnostics.getInstance().closeLogs();
         }
     }
 

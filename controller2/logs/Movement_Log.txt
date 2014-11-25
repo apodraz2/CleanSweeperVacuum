@@ -1,0 +1,346 @@
+2014-11-24 19:28:02.786 Vacuum visited cell: (1,0) Floor type: 2Battery life: 92.0%
+2014-11-24 19:28:02.818 Vacuum visited cell: (2,0) Floor type: 2Battery life: 84.0%
+2014-11-24 19:28:02.819 Vacuum visited cell: (3,0) Floor type: 2Battery life: 76.0%
+2014-11-24 19:28:02.82 Vacuum visited cell: (3,1) Floor type: 2Battery life: 68.0%
+2014-11-24 19:28:02.822 Vacuum visited cell: (2,1) Floor type: 2Battery life: 60.0%
+2014-11-24 19:28:02.823 Vacuum visited cell: (1,1) Floor type: 2Battery life: 52.0%
+2014-11-24 19:28:02.825 Vacuum visited cell: (0,1) Floor type: 2Battery life: 44.0%
+2014-11-24 19:28:02.827 Vacuum visited cell: (0,2) Floor type: 2Battery life: 36.0%
+2014-11-24 19:28:02.83 Vacuum visited cell: (1,2) Floor type: 2Battery life: 28.0%
+2014-11-24 19:28:02.833 Vacuum visited cell: (2,2) Floor type: 2Battery life: 20.0%
+2014-11-24 19:28:03.378 Vacuum visited cell: (0,0) Floor type: 2Battery life: 96.0%
+2014-11-24 19:28:03.385 Vacuum visited cell: (0,3) Floor type: 2Battery life: 80.0%
+2014-11-24 19:28:03.389 Vacuum visited cell: (1,3) Floor type: 2Battery life: 72.0%
+2014-11-24 19:28:03.391 Vacuum visited cell: (2,3) Floor type: 2Battery life: 64.0%
+2014-11-24 19:28:03.393 Vacuum visited cell: (3,3) Floor type: 2Battery life: 56.0%
+2014-11-24 19:28:03.396 Vacuum visited cell: (3,2) Floor type: 2Battery life: 48.0%
+2014-11-24 19:28:03.405 Vacuum visited cell: (4,3) Floor type: 1Battery life: 39.0%
+2014-11-24 19:28:03.406 Vacuum visited cell: (4,3) Floor type: 1Battery life: 37.0%
+2014-11-24 19:28:03.409 Vacuum visited cell: (4,2) Floor type: 1Battery life: 33.0%
+2014-11-24 19:28:03.41 Vacuum visited cell: (4,2) Floor type: 1Battery life: 31.0%
+2014-11-24 19:28:03.961 Vacuum visited cell: (0,4) Floor type: 2Battery life: 80.0%
+2014-11-24 19:28:03.963 Vacuum visited cell: (1,4) Floor type: 2Battery life: 72.0%
+2014-11-24 19:28:03.97 Vacuum visited cell: (2,4) Floor type: 2Battery life: 64.0%
+2014-11-24 19:28:03.971 Vacuum visited cell: (3,4) Floor type: 2Battery life: 56.0%
+2014-11-24 19:28:03.977 Vacuum visited cell: (5,3) Floor type: 1Battery life: 45.0%
+2014-11-24 19:28:03.979 Vacuum visited cell: (5,2) Floor type: 1Battery life: 41.0%
+2014-11-24 19:28:03.98 Vacuum visited cell: (5,1) Floor type: 1Battery life: 37.0%
+2014-11-24 19:28:04.518 Vacuum visited cell: (4,1) Floor type: 1Battery life: 73.0%
+2014-11-24 19:28:04.519 Vacuum visited cell: (4,1) Floor type: 1Battery life: 71.0%
+2014-11-24 19:28:04.52 Vacuum visited cell: (4,0) Floor type: 1Battery life: 67.0%
+2014-11-24 19:28:04.521 Vacuum visited cell: (4,0) Floor type: 1Battery life: 65.0%
+2014-11-24 19:28:04.522 Vacuum visited cell: (5,0) Floor type: 1Battery life: 61.0%
+2014-11-24 19:28:04.526 Vacuum visited cell: (5,4) Floor type: 1Battery life: 51.0%
+2014-11-24 19:28:04.527 Vacuum visited cell: (4,4) Floor type: 1Battery life: 47.0%
+2014-11-24 19:28:04.527 Vacuum visited cell: (4,4) Floor type: 1Battery life: 45.0%
+2014-11-24 19:28:04.528 Vacuum visited cell: (4,5) Floor type: 1Battery life: 41.0%
+2014-11-24 19:28:04.529 Vacuum visited cell: (4,5) Floor type: 1Battery life: 39.0%
+2014-11-24 19:28:05.068 Vacuum visited cell: (5,5) Floor type: 1Battery life: 71.0%
+2014-11-24 19:28:05.07 Vacuum visited cell: (5,6) Floor type: 1Battery life: 67.0%
+2014-11-24 19:28:05.077 Vacuum visited cell: (4,6) Floor type: 1Battery life: 63.0%
+2014-11-24 19:28:05.077 Vacuum visited cell: (4,6) Floor type: 1Battery life: 61.0%
+2014-11-24 19:28:05.078 Vacuum visited cell: (4,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:28:05.079 Vacuum visited cell: (4,7) Floor type: 1Battery life: 55.0%
+2014-11-24 19:28:05.08 Vacuum visited cell: (3,7) Floor type: 2Battery life: 48.0%
+2014-11-24 19:28:05.568 Vacuum visited cell: (5,7) Floor type: 1Battery life: 65.0%
+2014-11-24 19:28:05.569 Vacuum visited cell: (5,7) Floor type: 1Battery life: 63.0%
+2014-11-24 19:28:08.816 Vacuum visited cell: (5,7) Floor type: 1Battery life: 61.0%
+2014-11-24 19:28:08.817 Vacuum visited cell: (6,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:28:08.818 Vacuum visited cell: (7,7) Floor type: 1Battery life: 53.0%
+2014-11-24 19:28:08.82 Vacuum visited cell: (7,6) Floor type: 1Battery life: 49.0%
+2014-11-24 19:28:09.364 Vacuum visited cell: (2,7) Floor type: 2Battery life: 54.0%
+2014-11-24 19:28:09.907 Vacuum visited cell: (6,8) Floor type: 1Battery life: 57.0%
+2014-11-24 19:28:09.908 Vacuum visited cell: (7,8) Floor type: 1Battery life: 53.0%
+2014-11-24 19:28:10.416 Vacuum visited cell: (7,5) Floor type: 4Battery life: 83.0%
+2014-11-24 19:28:10.417 Vacuum visited cell: (7,4) Floor type: 4Battery life: 71.0%
+2014-11-24 19:28:10.424 Vacuum visited cell: (7,4) Floor type: 4Battery life: 65.0%
+2014-11-24 19:28:10.925 Vacuum visited cell: (2,8) Floor type: 2Battery life: 50.0%
+2014-11-24 19:28:11.466 Vacuum visited cell: (6,6) Floor type: 1Battery life: 53.0%
+2014-11-24 19:28:11.467 Vacuum visited cell: (6,5) Floor type: 1Battery life: 49.0%
+2014-11-24 19:28:12.022 Vacuum visited cell: (6,4) Floor type: 1Battery life: 61.0%
+2014-11-24 19:28:12.024 Vacuum visited cell: (6,3) Floor type: 1Battery life: 57.0%
+2014-11-24 19:28:12.032 Vacuum visited cell: (6,2) Floor type: 1Battery life: 53.0%
+2014-11-24 19:28:12.584 Vacuum visited cell: (7,3) Floor type: 4Battery life: 59.0%
+2014-11-24 19:28:12.584 Vacuum visited cell: (7,3) Floor type: 4Battery life: 53.0%
+2014-11-24 19:28:13.135 Vacuum visited cell: (6,1) Floor type: 1Battery life: 63.0%
+2014-11-24 19:28:13.136 Vacuum visited cell: (6,0) Floor type: 1Battery life: 59.0%
+2014-11-24 19:32:11.279 Vacuum visited cell: (1,0) Floor type: 2Battery life: 92.0%
+2014-11-24 19:32:11.312 Vacuum visited cell: (2,0) Floor type: 2Battery life: 84.0%
+2014-11-24 19:32:11.313 Vacuum visited cell: (3,0) Floor type: 2Battery life: 76.0%
+2014-11-24 19:32:11.315 Vacuum visited cell: (3,1) Floor type: 2Battery life: 68.0%
+2014-11-24 19:32:11.316 Vacuum visited cell: (2,1) Floor type: 2Battery life: 60.0%
+2014-11-24 19:32:11.318 Vacuum visited cell: (1,1) Floor type: 2Battery life: 52.0%
+2014-11-24 19:32:11.321 Vacuum visited cell: (0,1) Floor type: 2Battery life: 44.0%
+2014-11-24 19:32:11.323 Vacuum visited cell: (0,2) Floor type: 2Battery life: 36.0%
+2014-11-24 19:32:11.326 Vacuum visited cell: (1,2) Floor type: 2Battery life: 28.0%
+2014-11-24 19:32:11.33 Vacuum visited cell: (2,2) Floor type: 2Battery life: 20.0%
+2014-11-24 19:32:11.331 Vacuum comming back to charging station
+2014-11-24 19:32:11.875 Vacuum visited cell: (0,0) Floor type: 2Battery life: 96.0%
+2014-11-24 19:32:11.882 Vacuum visited cell: (0,3) Floor type: 2Battery life: 80.0%
+2014-11-24 19:32:11.886 Vacuum visited cell: (1,3) Floor type: 2Battery life: 72.0%
+2014-11-24 19:32:11.889 Vacuum visited cell: (2,3) Floor type: 2Battery life: 64.0%
+2014-11-24 19:32:11.892 Vacuum visited cell: (3,3) Floor type: 2Battery life: 56.0%
+2014-11-24 19:32:11.895 Vacuum visited cell: (3,2) Floor type: 2Battery life: 48.0%
+2014-11-24 19:32:11.905 Vacuum visited cell: (4,3) Floor type: 1Battery life: 39.0%
+2014-11-24 19:32:11.905 Vacuum visited cell: (4,3) Floor type: 1Battery life: 37.0%
+2014-11-24 19:32:11.908 Vacuum visited cell: (4,2) Floor type: 1Battery life: 33.0%
+2014-11-24 19:32:11.909 Vacuum visited cell: (4,2) Floor type: 1Battery life: 31.0%
+2014-11-24 19:32:11.91 Vacuum comming back to charging station
+2014-11-24 19:32:12.447 Vacuum visited cell: (0,4) Floor type: 2Battery life: 80.0%
+2014-11-24 19:32:12.449 Vacuum visited cell: (1,4) Floor type: 2Battery life: 72.0%
+2014-11-24 19:32:12.459 Vacuum visited cell: (2,4) Floor type: 2Battery life: 64.0%
+2014-11-24 19:32:12.462 Vacuum visited cell: (3,4) Floor type: 2Battery life: 56.0%
+2014-11-24 19:32:12.469 Vacuum visited cell: (5,3) Floor type: 1Battery life: 45.0%
+2014-11-24 19:32:12.471 Vacuum visited cell: (5,2) Floor type: 1Battery life: 41.0%
+2014-11-24 19:32:12.472 Vacuum visited cell: (5,1) Floor type: 1Battery life: 37.0%
+2014-11-24 19:32:12.473 Vacuum comming back to charging station
+2014-11-24 19:32:13.006 Vacuum visited cell: (4,1) Floor type: 1Battery life: 73.0%
+2014-11-24 19:32:13.008 Vacuum visited cell: (4,1) Floor type: 1Battery life: 71.0%
+2014-11-24 19:32:13.017 Vacuum visited cell: (4,0) Floor type: 1Battery life: 67.0%
+2014-11-24 19:32:13.018 Vacuum visited cell: (4,0) Floor type: 1Battery life: 65.0%
+2014-11-24 19:32:13.021 Vacuum visited cell: (5,0) Floor type: 1Battery life: 61.0%
+2014-11-24 19:32:13.027 Vacuum visited cell: (5,4) Floor type: 1Battery life: 51.0%
+2014-11-24 19:32:13.029 Vacuum visited cell: (4,4) Floor type: 1Battery life: 47.0%
+2014-11-24 19:32:13.029 Vacuum visited cell: (4,4) Floor type: 1Battery life: 45.0%
+2014-11-24 19:32:13.031 Vacuum visited cell: (4,5) Floor type: 1Battery life: 41.0%
+2014-11-24 19:32:13.031 Vacuum visited cell: (4,5) Floor type: 1Battery life: 39.0%
+2014-11-24 19:32:13.032 Vacuum comming back to charging station
+2014-11-24 19:32:13.579 Vacuum visited cell: (5,5) Floor type: 1Battery life: 71.0%
+2014-11-24 19:32:13.582 Vacuum visited cell: (5,6) Floor type: 1Battery life: 67.0%
+2014-11-24 19:32:13.589 Vacuum visited cell: (4,6) Floor type: 1Battery life: 63.0%
+2014-11-24 19:32:13.59 Vacuum visited cell: (4,6) Floor type: 1Battery life: 61.0%
+2014-11-24 19:32:13.592 Vacuum visited cell: (4,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:32:13.592 Vacuum visited cell: (4,7) Floor type: 1Battery life: 55.0%
+2014-11-24 19:32:13.593 Vacuum visited cell: (3,7) Floor type: 2Battery life: 48.0%
+2014-11-24 19:32:13.594 Vacuum comming back to charging station
+2014-11-24 19:32:14.082 Vacuum visited cell: (5,7) Floor type: 1Battery life: 65.0%
+2014-11-24 19:32:14.082 Vacuum visited cell: (5,7) Floor type: 1Battery life: 63.0%
+2014-11-24 19:32:16.701 Vacuum visited cell: (5,7) Floor type: 1Battery life: 61.0%
+2014-11-24 19:32:16.703 Vacuum visited cell: (6,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:32:16.711 Vacuum visited cell: (7,7) Floor type: 1Battery life: 53.0%
+2014-11-24 19:32:16.712 Vacuum visited cell: (7,6) Floor type: 1Battery life: 49.0%
+2014-11-24 19:32:16.713 Vacuum comming back to charging station
+2014-11-24 19:32:17.255 Vacuum visited cell: (2,7) Floor type: 2Battery life: 54.0%
+2014-11-24 19:32:17.257 Vacuum comming back to charging station
+2014-11-24 19:32:17.812 Vacuum visited cell: (6,8) Floor type: 1Battery life: 57.0%
+2014-11-24 19:32:17.814 Vacuum visited cell: (7,8) Floor type: 1Battery life: 53.0%
+2014-11-24 19:32:17.822 Vacuum comming back to charging station
+2014-11-24 19:32:18.309 Vacuum visited cell: (7,5) Floor type: 4Battery life: 83.0%
+2014-11-24 19:32:18.311 Vacuum visited cell: (7,4) Floor type: 4Battery life: 71.0%
+2014-11-24 19:32:18.317 Vacuum visited cell: (7,4) Floor type: 4Battery life: 65.0%
+2014-11-24 19:32:18.318 Vacuum comming back to charging station
+2014-11-24 19:32:18.81 Vacuum visited cell: (2,8) Floor type: 2Battery life: 50.0%
+2014-11-24 19:32:18.811 Vacuum comming back to charging station
+2014-11-24 19:32:19.365 Vacuum visited cell: (6,6) Floor type: 1Battery life: 53.0%
+2014-11-24 19:32:19.366 Vacuum visited cell: (6,5) Floor type: 1Battery life: 49.0%
+2014-11-24 19:32:19.374 Vacuum comming back to charging station
+2014-11-24 19:32:19.915 Vacuum visited cell: (6,4) Floor type: 1Battery life: 61.0%
+2014-11-24 19:32:19.916 Vacuum visited cell: (6,3) Floor type: 1Battery life: 57.0%
+2014-11-24 19:32:19.917 Vacuum visited cell: (6,2) Floor type: 1Battery life: 53.0%
+2014-11-24 19:32:19.918 Vacuum comming back to charging station
+2014-11-24 19:32:20.463 Vacuum visited cell: (7,3) Floor type: 4Battery life: 59.0%
+2014-11-24 19:32:20.464 Vacuum visited cell: (7,3) Floor type: 4Battery life: 53.0%
+2014-11-24 19:32:20.472 Vacuum comming back to charging station
+2014-11-24 19:32:21.031 Vacuum visited cell: (6,1) Floor type: 1Battery life: 63.0%
+2014-11-24 19:32:21.032 Vacuum visited cell: (6,0) Floor type: 1Battery life: 59.0%
+2014-11-24 19:32:21.039 Vacuum comming back to charging station
+2014-11-24 19:32:21.59 Vacuum comming back to charging station
+2014-11-24 19:32:22.147 Vacuum comming back to charging station
+2014-11-24 19:32:22.681 Vacuum comming back to charging station
+2014-11-24 19:37:12.038 Vacuum visited cell: (1,0) Floor type: 2Battery life: 92.0%
+2014-11-24 19:37:12.07 Vacuum visited cell: (2,0) Floor type: 2Battery life: 84.0%
+2014-11-24 19:37:12.072 Vacuum visited cell: (3,0) Floor type: 2Battery life: 76.0%
+2014-11-24 19:37:12.073 Vacuum visited cell: (3,1) Floor type: 2Battery life: 68.0%
+2014-11-24 19:37:12.075 Vacuum visited cell: (2,1) Floor type: 2Battery life: 60.0%
+2014-11-24 19:37:12.077 Vacuum visited cell: (1,1) Floor type: 2Battery life: 52.0%
+2014-11-24 19:37:12.079 Vacuum visited cell: (0,1) Floor type: 2Battery life: 44.0%
+2014-11-24 19:37:12.082 Vacuum visited cell: (0,2) Floor type: 2Battery life: 36.0%
+2014-11-24 19:37:12.085 Vacuum visited cell: (1,2) Floor type: 2Battery life: 28.0%
+2014-11-24 19:37:12.089 Vacuum visited cell: (2,2) Floor type: 2Battery life: 20.0%
+2014-11-24 19:37:12.093 Vacuum comming back to charging station
+2014-11-24 19:37:12.639 Vacuum visited cell: (0,0) Floor type: 2Battery life: 96.0%
+2014-11-24 19:37:12.646 Vacuum visited cell: (0,3) Floor type: 2Battery life: 80.0%
+2014-11-24 19:37:12.649 Vacuum visited cell: (1,3) Floor type: 2Battery life: 72.0%
+2014-11-24 19:37:12.652 Vacuum visited cell: (2,3) Floor type: 2Battery life: 64.0%
+2014-11-24 19:37:12.654 Vacuum visited cell: (3,3) Floor type: 2Battery life: 56.0%
+2014-11-24 19:37:12.657 Vacuum visited cell: (3,2) Floor type: 2Battery life: 48.0%
+2014-11-24 19:37:12.667 Vacuum visited cell: (4,3) Floor type: 1Battery life: 39.0%
+2014-11-24 19:37:12.668 Vacuum visited cell: (4,3) Floor type: 1Battery life: 37.0%
+2014-11-24 19:37:12.672 Vacuum visited cell: (4,2) Floor type: 1Battery life: 33.0%
+2014-11-24 19:37:12.673 Vacuum visited cell: (4,2) Floor type: 1Battery life: 31.0%
+2014-11-24 19:37:12.675 Vacuum comming back to charging station
+2014-11-24 19:37:13.225 Vacuum visited cell: (0,4) Floor type: 2Battery life: 80.0%
+2014-11-24 19:37:13.227 Vacuum visited cell: (1,4) Floor type: 2Battery life: 72.0%
+2014-11-24 19:37:13.232 Vacuum visited cell: (2,4) Floor type: 2Battery life: 64.0%
+2014-11-24 19:37:13.234 Vacuum visited cell: (3,4) Floor type: 2Battery life: 56.0%
+2014-11-24 19:37:13.242 Vacuum visited cell: (5,3) Floor type: 1Battery life: 45.0%
+2014-11-24 19:37:13.246 Vacuum visited cell: (5,2) Floor type: 1Battery life: 41.0%
+2014-11-24 19:37:13.248 Vacuum visited cell: (5,1) Floor type: 1Battery life: 37.0%
+2014-11-24 19:37:13.249 Vacuum comming back to charging station
+2014-11-24 19:37:13.793 Vacuum visited cell: (4,1) Floor type: 1Battery life: 73.0%
+2014-11-24 19:37:13.794 Vacuum visited cell: (4,1) Floor type: 1Battery life: 71.0%
+2014-11-24 19:37:13.803 Vacuum visited cell: (4,0) Floor type: 1Battery life: 67.0%
+2014-11-24 19:37:13.804 Vacuum visited cell: (4,0) Floor type: 1Battery life: 65.0%
+2014-11-24 19:37:13.808 Vacuum visited cell: (5,0) Floor type: 1Battery life: 61.0%
+2014-11-24 19:37:13.814 Vacuum visited cell: (5,4) Floor type: 1Battery life: 51.0%
+2014-11-24 19:37:13.817 Vacuum visited cell: (4,4) Floor type: 1Battery life: 47.0%
+2014-11-24 19:37:13.818 Vacuum visited cell: (4,4) Floor type: 1Battery life: 45.0%
+2014-11-24 19:37:13.826 Vacuum visited cell: (4,5) Floor type: 1Battery life: 41.0%
+2014-11-24 19:37:13.827 Vacuum visited cell: (4,5) Floor type: 1Battery life: 39.0%
+2014-11-24 19:37:13.828 Vacuum comming back to charging station
+2014-11-24 19:37:14.366 Vacuum visited cell: (5,5) Floor type: 1Battery life: 71.0%
+2014-11-24 19:37:14.368 Vacuum visited cell: (5,6) Floor type: 1Battery life: 67.0%
+2014-11-24 19:37:14.375 Vacuum visited cell: (4,6) Floor type: 1Battery life: 63.0%
+2014-11-24 19:37:14.376 Vacuum visited cell: (4,6) Floor type: 1Battery life: 61.0%
+2014-11-24 19:37:14.378 Vacuum visited cell: (4,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:37:14.378 Vacuum visited cell: (4,7) Floor type: 1Battery life: 55.0%
+2014-11-24 19:37:14.38 Vacuum visited cell: (3,7) Floor type: 2Battery life: 48.0%
+2014-11-24 19:37:14.381 Vacuum comming back to charging station
+2014-11-24 19:37:14.874 Vacuum visited cell: (5,7) Floor type: 1Battery life: 65.0%
+2014-11-24 19:37:14.875 Vacuum visited cell: (5,7) Floor type: 1Battery life: 63.0%
+2014-11-24 19:37:16.948 Vacuum visited cell: (5,7) Floor type: 1Battery life: 61.0%
+2014-11-24 19:37:16.95 Vacuum visited cell: (6,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:37:16.958 Vacuum visited cell: (7,7) Floor type: 1Battery life: 53.0%
+2014-11-24 19:37:16.96 Vacuum visited cell: (7,6) Floor type: 1Battery life: 49.0%
+2014-11-24 19:37:16.96 Vacuum comming back to charging station
+2014-11-24 19:37:17.502 Vacuum visited cell: (2,7) Floor type: 2Battery life: 54.0%
+2014-11-24 19:37:17.503 Vacuum comming back to charging station
+2014-11-24 19:37:18.048 Vacuum visited cell: (6,8) Floor type: 1Battery life: 57.0%
+2014-11-24 19:37:18.049 Vacuum visited cell: (7,8) Floor type: 1Battery life: 53.0%
+2014-11-24 19:37:18.057 Vacuum comming back to charging station
+2014-11-24 19:37:18.54 Vacuum visited cell: (7,5) Floor type: 4Battery life: 83.0%
+2014-11-24 19:37:18.542 Vacuum visited cell: (7,4) Floor type: 4Battery life: 71.0%
+2014-11-24 19:37:18.549 Vacuum visited cell: (7,4) Floor type: 4Battery life: 65.0%
+2014-11-24 19:37:18.55 Vacuum comming back to charging station
+2014-11-24 19:37:19.046 Vacuum visited cell: (2,8) Floor type: 2Battery life: 50.0%
+2014-11-24 19:37:19.047 Vacuum comming back to charging station
+2014-11-24 19:37:19.596 Vacuum visited cell: (6,6) Floor type: 1Battery life: 53.0%
+2014-11-24 19:37:19.598 Vacuum visited cell: (6,5) Floor type: 1Battery life: 49.0%
+2014-11-24 19:37:19.604 Vacuum comming back to charging station
+2014-11-24 19:37:20.153 Vacuum visited cell: (6,4) Floor type: 1Battery life: 61.0%
+2014-11-24 19:37:20.154 Vacuum visited cell: (6,3) Floor type: 1Battery life: 57.0%
+2014-11-24 19:37:20.162 Vacuum visited cell: (6,2) Floor type: 1Battery life: 53.0%
+2014-11-24 19:37:20.163 Vacuum comming back to charging station
+2014-11-24 19:37:20.716 Vacuum visited cell: (7,3) Floor type: 4Battery life: 59.0%
+2014-11-24 19:37:20.717 Vacuum visited cell: (7,3) Floor type: 4Battery life: 53.0%
+2014-11-24 19:37:20.726 Vacuum comming back to charging station
+2014-11-24 19:37:21.274 Vacuum visited cell: (6,1) Floor type: 1Battery life: 63.0%
+2014-11-24 19:37:21.276 Vacuum visited cell: (6,0) Floor type: 1Battery life: 59.0%
+2014-11-24 19:37:21.283 Vacuum comming back to charging station
+2014-11-24 19:37:21.838 Vacuum comming back to charging station
+2014-11-24 19:37:22.386 Vacuum comming back to charging station
+2014-11-24 19:37:22.924 Vacuum comming back to charging station
+2014-11-24 19:38:22.514 Vacuum visited cell: (1,0) Floor type: 2Battery life: 92.0%
+2014-11-24 19:38:22.524 Vacuum visited cell: (2,0) Floor type: 2Battery life: 84.0%
+2014-11-24 19:38:22.525 Vacuum visited cell: (3,0) Floor type: 2Battery life: 76.0%
+2014-11-24 19:38:22.527 Vacuum visited cell: (3,1) Floor type: 2Battery life: 68.0%
+2014-11-24 19:38:22.528 Vacuum visited cell: (2,1) Floor type: 2Battery life: 60.0%
+2014-11-24 19:38:22.53 Vacuum visited cell: (1,1) Floor type: 2Battery life: 52.0%
+2014-11-24 19:38:22.532 Vacuum visited cell: (0,1) Floor type: 2Battery life: 44.0%
+2014-11-24 19:38:22.535 Vacuum visited cell: (0,2) Floor type: 2Battery life: 36.0%
+2014-11-24 19:38:22.538 Vacuum visited cell: (1,2) Floor type: 2Battery life: 28.0%
+2014-11-24 19:38:22.541 Vacuum visited cell: (2,2) Floor type: 2Battery life: 20.0%
+2014-11-24 19:38:22.542 Vacuum comming back to charging station
+2014-11-24 19:38:22.551 Vacuum visited cell: (0,0) Floor type: 2Battery life: 96.0%
+2014-11-24 19:38:22.556 Vacuum visited cell: (0,3) Floor type: 2Battery life: 80.0%
+2014-11-24 19:38:22.559 Vacuum visited cell: (1,3) Floor type: 2Battery life: 72.0%
+2014-11-24 19:38:22.562 Vacuum visited cell: (2,3) Floor type: 2Battery life: 64.0%
+2014-11-24 19:38:22.564 Vacuum visited cell: (3,3) Floor type: 2Battery life: 56.0%
+2014-11-24 19:38:22.568 Vacuum visited cell: (3,2) Floor type: 2Battery life: 48.0%
+2014-11-24 19:38:22.577 Vacuum visited cell: (4,3) Floor type: 1Battery life: 39.0%
+2014-11-24 19:38:22.578 Vacuum visited cell: (4,3) Floor type: 1Battery life: 37.0%
+2014-11-24 19:38:22.582 Vacuum visited cell: (4,2) Floor type: 1Battery life: 33.0%
+2014-11-24 19:38:22.583 Vacuum visited cell: (4,2) Floor type: 1Battery life: 31.0%
+2014-11-24 19:38:22.585 Vacuum comming back to charging station
+2014-11-24 19:38:22.602 Vacuum visited cell: (0,4) Floor type: 2Battery life: 80.0%
+2014-11-24 19:38:22.604 Vacuum visited cell: (1,4) Floor type: 2Battery life: 72.0%
+2014-11-24 19:38:22.607 Vacuum visited cell: (2,4) Floor type: 2Battery life: 64.0%
+2014-11-24 19:38:22.609 Vacuum visited cell: (3,4) Floor type: 2Battery life: 56.0%
+2014-11-24 19:38:22.614 Vacuum visited cell: (5,3) Floor type: 1Battery life: 45.0%
+2014-11-24 19:38:22.616 Vacuum visited cell: (5,2) Floor type: 1Battery life: 41.0%
+2014-11-24 19:38:22.618 Vacuum visited cell: (5,1) Floor type: 1Battery life: 37.0%
+2014-11-24 19:38:22.619 Vacuum comming back to charging station
+2014-11-24 19:38:22.633 Vacuum visited cell: (4,1) Floor type: 1Battery life: 73.0%
+2014-11-24 19:38:22.634 Vacuum visited cell: (4,1) Floor type: 1Battery life: 71.0%
+2014-11-24 19:38:22.635 Vacuum visited cell: (4,0) Floor type: 1Battery life: 67.0%
+2014-11-24 19:38:22.636 Vacuum visited cell: (4,0) Floor type: 1Battery life: 65.0%
+2014-11-24 19:38:22.638 Vacuum visited cell: (5,0) Floor type: 1Battery life: 61.0%
+2014-11-24 19:38:22.644 Vacuum visited cell: (5,4) Floor type: 1Battery life: 51.0%
+2014-11-24 19:38:22.646 Vacuum visited cell: (4,4) Floor type: 1Battery life: 47.0%
+2014-11-24 19:38:22.646 Vacuum visited cell: (4,4) Floor type: 1Battery life: 45.0%
+2014-11-24 19:38:22.648 Vacuum visited cell: (4,5) Floor type: 1Battery life: 41.0%
+2014-11-24 19:38:22.649 Vacuum visited cell: (4,5) Floor type: 1Battery life: 39.0%
+2014-11-24 19:38:22.65 Vacuum comming back to charging station
+2014-11-24 19:38:22.666 Vacuum visited cell: (5,5) Floor type: 1Battery life: 71.0%
+2014-11-24 19:38:22.667 Vacuum visited cell: (5,6) Floor type: 1Battery life: 67.0%
+2014-11-24 19:38:22.669 Vacuum visited cell: (4,6) Floor type: 1Battery life: 63.0%
+2014-11-24 19:38:22.67 Vacuum visited cell: (4,6) Floor type: 1Battery life: 61.0%
+2014-11-24 19:38:22.672 Vacuum visited cell: (4,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:38:22.673 Vacuum visited cell: (4,7) Floor type: 1Battery life: 55.0%
+2014-11-24 19:38:22.676 Vacuum visited cell: (5,7) Floor type: 1Battery life: 51.0%
+2014-11-24 19:38:22.677 Vacuum visited cell: (5,7) Floor type: 1Battery life: 49.0%
+2014-11-24 19:38:22.677 Vacuum visited cell: (5,7) Floor type: 1Battery life: 47.0%
+2014-11-24 19:38:22.678 Vacuum comming back to charging station
+2014-11-24 19:38:22.842 Vacuum visited cell: (1,0) Floor type: 4Battery life: 88.0%
+2014-11-24 19:38:22.843 Vacuum visited cell: (2,0) Floor type: 4Battery life: 76.0%
+2014-11-24 19:38:22.843 Vacuum visited cell: (3,0) Floor type: 4Battery life: 64.0%
+2014-11-24 19:38:22.844 Vacuum visited cell: (4,0) Floor type: 4Battery life: 52.0%
+2014-11-24 19:38:22.845 Vacuum visited cell: (5,0) Floor type: 4Battery life: 40.0%
+2014-11-24 19:38:22.845 Vacuum comming back to charging station
+2014-11-24 19:38:22.846 Vacuum visited cell: (0,0) Floor type: 4Battery life: 4.0%
+2014-11-24 19:38:22.847 Vacuum visited cell: (6,0) Floor type: 4Battery life: 58.0%
+2014-11-24 19:38:22.848 Vacuum visited cell: (7,0) Floor type: 4Battery life: 46.0%
+2014-11-24 19:38:22.848 Vacuum comming back to charging station
+2014-11-24 19:38:22.85 Vacuum comming back to charging station
+2014-11-24 19:38:22.851 Vacuum comming back to charging station
+2014-11-24 19:38:22.957 Vacuum visited cell: (1,0) Floor type: 2Battery life: 92.0%
+2014-11-24 19:38:22.957 Vacuum visited cell: (2,0) Floor type: 2Battery life: 84.0%
+2014-11-24 19:38:22.966 Vacuum visited cell: (3,0) Floor type: 2Battery life: 76.0%
+2014-11-24 19:38:22.967 Vacuum visited cell: (3,1) Floor type: 2Battery life: 68.0%
+2014-11-24 19:38:22.968 Vacuum visited cell: (2,1) Floor type: 2Battery life: 60.0%
+2014-11-24 19:38:22.97 Vacuum visited cell: (1,1) Floor type: 2Battery life: 52.0%
+2014-11-24 19:38:22.971 Vacuum visited cell: (0,1) Floor type: 2Battery life: 44.0%
+2014-11-24 19:38:22.972 Vacuum visited cell: (0,2) Floor type: 2Battery life: 36.0%
+2014-11-24 19:38:22.973 Vacuum visited cell: (1,2) Floor type: 2Battery life: 28.0%
+2014-11-24 19:38:22.975 Vacuum visited cell: (2,2) Floor type: 2Battery life: 20.0%
+2014-11-24 19:38:22.976 Vacuum comming back to charging station
+2014-11-24 19:38:22.977 Vacuum visited cell: (0,0) Floor type: 2Battery life: 96.0%
+2014-11-24 19:38:22.979 Vacuum visited cell: (0,3) Floor type: 2Battery life: 80.0%
+2014-11-24 19:38:22.979 Vacuum visited cell: (1,3) Floor type: 2Battery life: 72.0%
+2014-11-24 19:38:22.98 Vacuum visited cell: (2,3) Floor type: 2Battery life: 64.0%
+2014-11-24 19:38:22.981 Vacuum visited cell: (3,3) Floor type: 2Battery life: 56.0%
+2014-11-24 19:38:22.982 Vacuum visited cell: (3,2) Floor type: 2Battery life: 48.0%
+2014-11-24 19:38:22.982 Vacuum visited cell: (4,3) Floor type: 1Battery life: 39.0%
+2014-11-24 19:38:22.983 Vacuum visited cell: (4,3) Floor type: 1Battery life: 37.0%
+2014-11-24 19:38:22.984 Vacuum visited cell: (4,2) Floor type: 1Battery life: 33.0%
+2014-11-24 19:38:22.984 Vacuum visited cell: (4,2) Floor type: 1Battery life: 31.0%
+2014-11-24 19:38:22.984 Vacuum comming back to charging station
+2014-11-24 19:38:22.986 Vacuum visited cell: (0,4) Floor type: 2Battery life: 80.0%
+2014-11-24 19:38:22.988 Vacuum visited cell: (1,4) Floor type: 2Battery life: 72.0%
+2014-11-24 19:38:22.989 Vacuum visited cell: (2,4) Floor type: 2Battery life: 64.0%
+2014-11-24 19:38:22.99 Vacuum visited cell: (3,4) Floor type: 2Battery life: 56.0%
+2014-11-24 19:38:22.991 Vacuum visited cell: (5,3) Floor type: 1Battery life: 45.0%
+2014-11-24 19:38:22.992 Vacuum visited cell: (5,2) Floor type: 1Battery life: 41.0%
+2014-11-24 19:38:22.993 Vacuum visited cell: (5,1) Floor type: 1Battery life: 37.0%
+2014-11-24 19:38:22.993 Vacuum comming back to charging station
+2014-11-24 19:38:22.997 Vacuum visited cell: (4,1) Floor type: 1Battery life: 73.0%
+2014-11-24 19:38:22.998 Vacuum visited cell: (4,1) Floor type: 1Battery life: 71.0%
+2014-11-24 19:38:22.999 Vacuum visited cell: (4,0) Floor type: 1Battery life: 67.0%
+2014-11-24 19:38:23.0 Vacuum visited cell: (4,0) Floor type: 1Battery life: 65.0%
+2014-11-24 19:38:23.001 Vacuum visited cell: (5,0) Floor type: 1Battery life: 61.0%
+2014-11-24 19:38:23.003 Vacuum visited cell: (5,4) Floor type: 1Battery life: 51.0%
+2014-11-24 19:38:23.004 Vacuum visited cell: (4,4) Floor type: 1Battery life: 47.0%
+2014-11-24 19:38:23.004 Vacuum visited cell: (4,4) Floor type: 1Battery life: 45.0%
+2014-11-24 19:38:23.005 Vacuum visited cell: (4,5) Floor type: 1Battery life: 41.0%
+2014-11-24 19:38:23.006 Vacuum visited cell: (4,5) Floor type: 1Battery life: 39.0%
+2014-11-24 19:38:23.007 Vacuum comming back to charging station
+2014-11-24 19:38:23.015 Vacuum visited cell: (5,5) Floor type: 1Battery life: 71.0%
+2014-11-24 19:38:23.016 Vacuum visited cell: (5,6) Floor type: 1Battery life: 67.0%
+2014-11-24 19:38:23.018 Vacuum visited cell: (4,6) Floor type: 1Battery life: 63.0%
+2014-11-24 19:38:23.019 Vacuum visited cell: (4,6) Floor type: 1Battery life: 61.0%
+2014-11-24 19:38:23.02 Vacuum visited cell: (4,7) Floor type: 1Battery life: 57.0%
+2014-11-24 19:38:23.021 Vacuum visited cell: (4,7) Floor type: 1Battery life: 55.0%
+2014-11-24 19:38:23.022 Vacuum visited cell: (5,7) Floor type: 1Battery life: 51.0%
+2014-11-24 19:38:23.023 Vacuum visited cell: (5,7) Floor type: 1Battery life: 49.0%
+2014-11-24 19:38:23.024 Vacuum visited cell: (5,7) Floor type: 1Battery life: 47.0%
+2014-11-24 19:38:23.024 Vacuum comming back to charging station

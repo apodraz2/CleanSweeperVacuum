@@ -1,0 +1,166 @@
+Battery life at cell (1,0)is: 92.0%
+Battery life at cell (2,0)is: 84.0%
+Battery life at cell (3,0)is: 76.0%
+Battery life at cell (3,1)is: 68.0%
+Battery life at cell (2,1)is: 60.0%
+Battery life at cell (1,1)is: 52.0%
+Battery life at cell (0,1)is: 44.0%
+Battery life at cell (0,2)is: 36.0%
+Battery life at cell (1,2)is: 28.0%
+Battery life at cell (2,2)is: 20.0%
+Battery life at cell (0,0)is: 96.0%
+Battery life at cell (0,3)is: 80.0%
+Battery life at cell (1,3)is: 72.0%
+Battery life at cell (2,3)is: 64.0%
+Battery life at cell (3,3)is: 56.0%
+Battery life at cell (3,2)is: 48.0%
+Battery life at cell (4,3)is: 39.0%
+Battery life at cell (4,3)is: 37.0%
+Battery life at cell (4,2)is: 33.0%
+Battery life at cell (4,2)is: 31.0%
+Battery life at cell (0,4)is: 80.0%
+Battery life at cell (1,4)is: 72.0%
+Battery life at cell (2,4)is: 64.0%
+Battery life at cell (3,4)is: 56.0%
+Battery life at cell (5,3)is: 45.0%
+Battery life at cell (5,2)is: 41.0%
+Battery life at cell (5,1)is: 37.0%
+Battery life at cell (4,1)is: 73.0%
+Battery life at cell (4,1)is: 71.0%
+Battery life at cell (4,0)is: 67.0%
+Battery life at cell (4,0)is: 65.0%
+Battery life at cell (5,0)is: 61.0%
+Battery life at cell (5,4)is: 51.0%
+Battery life at cell (4,4)is: 47.0%
+Battery life at cell (4,4)is: 45.0%
+Battery life at cell (4,5)is: 41.0%
+Battery life at cell (4,5)is: 39.0%
+Battery life at cell (5,5)is: 71.0%
+Battery life at cell (5,6)is: 67.0%
+Battery life at cell (4,6)is: 63.0%
+Battery life at cell (4,6)is: 61.0%
+Battery life at cell (4,7)is: 57.0%
+Battery life at cell (4,7)is: 55.0%
+Battery life at cell (3,7)is: 48.0%
+Battery life at cell (5,7)is: 65.0%
+Battery life at cell (5,7)is: 63.0%
+Battery life at cell (5,7)is: 61.0%
+Battery life at cell (6,7)is: 57.0%
+Battery life at cell (7,7)is: 53.0%
+Battery life at cell (7,6)is: 49.0%
+Battery life at cell (2,7)is: 54.0%
+Battery life at cell (6,8)is: 57.0%
+Battery life at cell (7,8)is: 53.0%
+Battery life at cell (7,5)is: 83.0%
+Battery life at cell (7,4)is: 71.0%
+Battery life at cell (7,4)is: 65.0%
+Battery life at cell (2,8)is: 50.0%
+Battery life at cell (6,6)is: 53.0%
+Battery life at cell (6,5)is: 49.0%
+Battery life at cell (6,4)is: 61.0%
+Battery life at cell (6,3)is: 57.0%
+Battery life at cell (6,2)is: 53.0%
+Battery life at cell (7,3)is: 59.0%
+Battery life at cell (7,3)is: 53.0%
+Battery life at cell (6,1)is: 63.0%
+Battery life at cell (6,0)is: 59.0%
+Battery life at cell (1,0) is: 92.0%
+Battery life at cell (2,0) is: 84.0%
+Battery life at cell (3,0) is: 76.0%
+Battery life at cell (3,1) is: 68.0%
+Battery life at cell (2,1) is: 60.0%
+Battery life at cell (1,1) is: 52.0%
+Battery life at cell (0,1) is: 44.0%
+Battery life at cell (0,2) is: 36.0%
+Battery life at cell (1,2) is: 28.0%
+Battery life at cell (2,2) is: 20.0%
+Battery life at cell (0,0) is: 96.0%
+Battery life at cell (0,3) is: 80.0%
+Battery life at cell (1,3) is: 72.0%
+Battery life at cell (2,3) is: 64.0%
+Battery life at cell (3,3) is: 56.0%
+Battery life at cell (3,2) is: 48.0%
+Battery life at cell (4,3) is: 39.0%
+Battery life at cell (4,3) is: 37.0%
+Battery life at cell (4,2) is: 33.0%
+Battery life at cell (4,2) is: 31.0%
+Battery life at cell (0,4) is: 80.0%
+Battery life at cell (1,4) is: 72.0%
+Battery life at cell (2,4) is: 64.0%
+Battery life at cell (3,4) is: 56.0%
+Battery life at cell (5,3) is: 45.0%
+Battery life at cell (5,2) is: 41.0%
+Battery life at cell (5,1) is: 37.0%
+Battery life at cell (4,1) is: 73.0%
+Battery life at cell (4,1) is: 71.0%
+Battery life at cell (4,0) is: 67.0%
+Battery life at cell (4,0) is: 65.0%
+Battery life at cell (5,0) is: 61.0%
+Battery life at cell (5,4) is: 51.0%
+Battery life at cell (4,4) is: 47.0%
+Battery life at cell (4,4) is: 45.0%
+Battery life at cell (4,5) is: 41.0%
+Battery life at cell (4,5) is: 39.0%
+Battery life at cell (5,5) is: 71.0%
+Battery life at cell (5,6) is: 67.0%
+Battery life at cell (4,6) is: 63.0%
+Battery life at cell (4,6) is: 61.0%
+Battery life at cell (4,7) is: 57.0%
+Battery life at cell (4,7) is: 55.0%
+Battery life at cell (5,7) is: 51.0%
+Battery life at cell (5,7) is: 49.0%
+Battery life at cell (5,7) is: 47.0%
+Battery life at cell (1,0) is: 88.0%
+Battery life at cell (2,0) is: 76.0%
+Battery life at cell (3,0) is: 64.0%
+Battery life at cell (4,0) is: 52.0%
+Battery life at cell (5,0) is: 40.0%
+Battery life at cell (0,0) is: 4.0%
+Battery life at cell (6,0) is: 58.0%
+Battery life at cell (7,0) is: 46.0%
+Battery life at cell (1,0) is: 92.0%
+Battery life at cell (2,0) is: 84.0%
+Battery life at cell (3,0) is: 76.0%
+Battery life at cell (3,1) is: 68.0%
+Battery life at cell (2,1) is: 60.0%
+Battery life at cell (1,1) is: 52.0%
+Battery life at cell (0,1) is: 44.0%
+Battery life at cell (0,2) is: 36.0%
+Battery life at cell (1,2) is: 28.0%
+Battery life at cell (2,2) is: 20.0%
+Battery life at cell (0,0) is: 96.0%
+Battery life at cell (0,3) is: 80.0%
+Battery life at cell (1,3) is: 72.0%
+Battery life at cell (2,3) is: 64.0%
+Battery life at cell (3,3) is: 56.0%
+Battery life at cell (3,2) is: 48.0%
+Battery life at cell (4,3) is: 39.0%
+Battery life at cell (4,3) is: 37.0%
+Battery life at cell (4,2) is: 33.0%
+Battery life at cell (4,2) is: 31.0%
+Battery life at cell (0,4) is: 80.0%
+Battery life at cell (1,4) is: 72.0%
+Battery life at cell (2,4) is: 64.0%
+Battery life at cell (3,4) is: 56.0%
+Battery life at cell (5,3) is: 45.0%
+Battery life at cell (5,2) is: 41.0%
+Battery life at cell (5,1) is: 37.0%
+Battery life at cell (4,1) is: 73.0%
+Battery life at cell (4,1) is: 71.0%
+Battery life at cell (4,0) is: 67.0%
+Battery life at cell (4,0) is: 65.0%
+Battery life at cell (5,0) is: 61.0%
+Battery life at cell (5,4) is: 51.0%
+Battery life at cell (4,4) is: 47.0%
+Battery life at cell (4,4) is: 45.0%
+Battery life at cell (4,5) is: 41.0%
+Battery life at cell (4,5) is: 39.0%
+Battery life at cell (5,5) is: 71.0%
+Battery life at cell (5,6) is: 67.0%
+Battery life at cell (4,6) is: 63.0%
+Battery life at cell (4,6) is: 61.0%
+Battery life at cell (4,7) is: 57.0%
+Battery life at cell (4,7) is: 55.0%
+Battery life at cell (5,7) is: 51.0%
+Battery life at cell (5,7) is: 49.0%
+Battery life at cell (5,7) is: 47.0%
